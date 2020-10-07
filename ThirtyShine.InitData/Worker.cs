@@ -18,14 +18,6 @@ namespace ThirtyShine.InitData
             _processing = processing;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            await _processing.Handler();
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(1000, stoppingToken);
-            }
-        }
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken) => await _processing.Handler();
     }
 }
