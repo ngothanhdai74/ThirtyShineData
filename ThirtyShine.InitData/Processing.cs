@@ -4,25 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Uitility.Common;
 namespace ThirtyShine.InitData
 {
     public class Processing : IProcessing
     {
         public async Task Handler()
         {
-            try
-            {
-                var tzis = TimeZoneInfo.GetSystemTimeZones();
-                TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
-                var convert = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, cstZone);
-                var bw = DateTime.Now;
-            }
-            catch (Exception ex)
-            {
-
-                Console.ReadKey();
-            }
+            var data = DateTime.UtcNow;
+            var da = data.ToVietNameDateTime();
 
             //using(var db = new _20190809Context())
             //{
