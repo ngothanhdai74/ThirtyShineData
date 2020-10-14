@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.DataObject", "1.DataObjec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DB201990809", "DB201990809\DB201990809.csproj", "{3A6F566A-EEE8-47C7-A855-ADE8C13AEBF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uitility.Common", "Uitility.Common\Uitility.Common.csproj", "{C36F6142-9DD6-4295-8424-442F37828B5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uitility.Common", "Uitility.Common\Uitility.Common.csproj", "{C36F6142-9DD6-4295-8424-442F37828B5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThirtyShine.ConsoleApp", "ThirtyShine.ConsoleApp\ThirtyShine.ConsoleApp.csproj", "{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{C36F6142-9DD6-4295-8424-442F37828B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C36F6142-9DD6-4295-8424-442F37828B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C36F6142-9DD6-4295-8424-442F37828B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
