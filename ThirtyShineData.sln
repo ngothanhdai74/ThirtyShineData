@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uitility.Common", "Uitility
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThirtyShine.ConsoleApp", "ThirtyShine.ConsoleApp\ThirtyShine.ConsoleApp.csproj", "{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTest", "WebTest\WebTest.csproj", "{E938E38A-8C1B-4675-B039-733A17D0E9B2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,10 +35,6 @@ Global
 		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E938E38A-8C1B-4675-B039-733A17D0E9B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E938E38A-8C1B-4675-B039-733A17D0E9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E938E38A-8C1B-4675-B039-733A17D0E9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E938E38A-8C1B-4675-B039-733A17D0E9B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
