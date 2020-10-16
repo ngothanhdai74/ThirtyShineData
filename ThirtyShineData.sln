@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uitility.Common", "Uitility
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThirtyShine.ConsoleApp", "ThirtyShine.ConsoleApp\ThirtyShine.ConsoleApp.csproj", "{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDaihu", "WebDaihu\WebDaihu.csproj", "{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
