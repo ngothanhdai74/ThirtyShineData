@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DB201990809\DB201990809.csproj" />
+    <ProjectReference Include="..\S4M\S4M.csproj" />
     <ProjectReference Include="..\Uitility.Common\Uitility.Common.csproj" />
   </ItemGroup>
 </Project>

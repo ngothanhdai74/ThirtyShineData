@@ -18,6 +18,9 @@ namespace ThirtyShine.InitData
             _processing = processing;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken) => await _processing.Handler();
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            await S4MRepository.Handler();
+        }
     }
 }
