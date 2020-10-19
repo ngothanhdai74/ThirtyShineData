@@ -1,6 +1,8 @@
 ﻿using DB201990809;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,28 +13,17 @@ namespace ThirtyShine.InitData
     {
         public async Task Handler()
         {
-            var data = DateTime.UtcNow;
-            var da = data.ToVietNameDateTime();
+            using (var db = new _20190809Context())
+            {
+                var query = db.BillService.AsQueryable();
 
-            //using(var db = new _20190809Context())
-            //{
-            //    db.PermissionMenuAction.Add(new PermissionMenuAction()
-            //    {
-            //        PermissionId = 7,
-            //        ActionId = 1,
-            //        PageId = 20245,
-            //        CreatedTime = DateTime.UtcNow,
-            //        IsActive = true,
-            //        IsDelete = false,
-            //    });
-            //    //var data = db.PermissionMenu.FirstOrDefault(m => m.Name.Contains("Điểm danh"));
-            //    //if (data != null)
-            //    //{
-            //    //    data.Pid = 20245;
-            //        var res = db.SaveChanges();
-            //    //}
-            //}
-            Console.ReadKey();
+
+
+
+
+                var data = query.ToSql();
+                return;
+            }
         }
     }
     public interface IProcessing
