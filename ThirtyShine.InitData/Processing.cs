@@ -15,12 +15,15 @@ namespace ThirtyShine.InitData
         {
             using (var db = new _20190809Context())
             {
-                var query = db.BillService.AsQueryable();
+                var query = from bill in db.BillService.Where(m => m.CreatedDate >= DateTime.Now.AddDays(-40))
+                            join cus in db.Customer on bill.CustomerId equals cus.Id
 
-
-
-
-
+                            select new
+                            {
+                                IdKh = cus.Id,
+                                NameKh = cus.Fullname,
+                                Sdt = cus.Phone,
+                            };
                 var data = query.ToSql();
                 return;
             }

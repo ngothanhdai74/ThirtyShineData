@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uitility.Common", "Uitility
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThirtyShine.ConsoleApp", "ThirtyShine.ConsoleApp\ThirtyShine.ConsoleApp.csproj", "{12FC8A97-33D4-447A-AFF2-86C3D1B6120E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDaihu", "WebDaihu\WebDaihu.csproj", "{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebDaihu", "WebDaihu\WebDaihu.csproj", "{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S4M", "S4M\S4M.csproj", "{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +43,17 @@ Global
 		{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B81394D-6EE8-49B7-8AA5-3D3F2458DDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3A6F566A-EEE8-47C7-A855-ADE8C13AEBF8} = {E9F42863-ACDD-404E-BB81-DB79416F019D}
+		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5} = {E9F42863-ACDD-404E-BB81-DB79416F019D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F8EC899F-F313-4279-ABD4-BFD3316F4A58}
