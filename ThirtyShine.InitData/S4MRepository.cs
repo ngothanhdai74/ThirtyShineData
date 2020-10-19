@@ -18,9 +18,11 @@ namespace ThirtyShine.InitData
                             join salon in db.TblSalon.Where(m => m.IsSalonHoiQuan == true) on bill.SalonId equals salon.Id
                             select new
                             {
-                                IdKh = cus.Id,
-                                NameKh = cus.Fullname,
-                                Sdt = cus.Phone,
+                                idKh = cus.Id,
+                                nameKh = cus.Fullname,
+                                sdt = cus.Phone,
+                                salonlastbill = salon.Id,
+                                datelastbill = bill.CompleteBillTime
                             };
 
                 var data = query.ToSql();
