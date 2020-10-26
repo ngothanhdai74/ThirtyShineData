@@ -10,7 +10,7 @@ namespace Uitility.Common
         {
             try
             {
-                //var tzis = TimeZoneInfo.GetSystemTimeZones();
+                var tzis = TimeZoneInfo.GetSystemTimeZones();
                 TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
                 return TimeZoneInfo.ConvertTimeFromUtc(dateTime, cstZone);
             }

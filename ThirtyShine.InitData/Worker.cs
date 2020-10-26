@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Uitility.Common;
 
 namespace ThirtyShine.InitData
 {
@@ -20,6 +21,8 @@ namespace ThirtyShine.InitData
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            //var now = DateTime.UtcNow;
+            //var das = now.ToVietNameDateTime();
             await S4MRepository.Handler();
         }
     }
