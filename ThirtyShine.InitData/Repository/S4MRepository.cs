@@ -118,5 +118,24 @@ namespace ThirtyShine.InitData
                 }
             }
         }
+        public static async Task AddHomePage()
+        {
+            using (var db = new S4MContext())
+            {
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+
+                        //----------------------------------------
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        await transaction.RollbackAsync();
+                    }
+                }
+            }
+        }
     }
 }
