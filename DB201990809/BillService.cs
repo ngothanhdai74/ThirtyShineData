@@ -108,5 +108,6 @@ namespace DB201990809
         public int? AccountBalanceChange { get; set; }
         public decimal? AccountDiscountPercent { get; set; }
         public int? OnlinePaymentType { get; set; }
+        public int? Progressing { get; set; }
     }
 }

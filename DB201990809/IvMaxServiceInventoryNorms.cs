@@ -17,5 +17,8 @@ namespace DB201990809
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public bool IsDelete { get; set; }
+        public decimal? AvgNumOfServiceWeekly { get; set; }
+        public decimal? AvgNumOfServiceMonthly { get; set; }
+        public decimal? SafeInventorySugges { get; set; }
     }
 }

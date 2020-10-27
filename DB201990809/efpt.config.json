@@ -962,6 +962,10 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[SalonAudit]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[SalonCamera]"
       },
       {

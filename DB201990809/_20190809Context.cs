@@ -251,6 +251,7 @@ namespace DB201990809
         public virtual DbSet<SalaryConfigStaff> SalaryConfigStaff { get; set; }
         public virtual DbSet<SalaryIncome> SalaryIncome { get; set; }
         public virtual DbSet<SalaryIncomeChange> SalaryIncomeChange { get; set; }
+        public virtual DbSet<SalonAudit> SalonAudit { get; set; }
         public virtual DbSet<SalonCamera> SalonCamera { get; set; }
         public virtual DbSet<SalonCampaign> SalonCampaign { get; set; }
         public virtual DbSet<SalonDailyCost> SalonDailyCost { get; set; }
@@ -1443,6 +1444,8 @@ namespace DB201990809
                 entity.Property(e => e.Macaddress)
                     .HasColumnName("MACAddress")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.MetaData).HasMaxLength(4000);
 
                 entity.Property(e => e.MigrateStatus).HasDefaultValueSql("((0))");
 
@@ -3951,6 +3954,10 @@ namespace DB201990809
                 entity.HasIndex(e => new { e.InventoryId, e.ProductId, e.Date })
                     .IsUnique();
 
+                entity.Property(e => e.AvgNumOfServiceMonthly).HasColumnType("decimal(10, 1)");
+
+                entity.Property(e => e.AvgNumOfServiceWeekly).HasColumnType("decimal(10, 1)");
+
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Date).HasColumnType("date");
@@ -3964,6 +3971,10 @@ namespace DB201990809
                 entity.Property(e => e.MaxUsedInServiceLastPeriod).HasColumnType("decimal(10, 0)");
 
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.SafeInventorySugges)
+                    .HasColumnType("decimal(10, 0)")
+                    .HasDefaultValueSql("((0))");
             });
 
             modelBuilder.Entity<IvMaxServiceInventoryNormsHistory>(entity =>
@@ -5883,6 +5894,15 @@ namespace DB201990809
                 entity.Property(e => e.Uid).HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.WorkDate).HasColumnType("date");
+            });
+
+            modelBuilder.Entity<SalonAudit>(entity =>
+            {
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Name).HasMaxLength(512);
             });
 
             modelBuilder.Entity<SalonCamera>(entity =>

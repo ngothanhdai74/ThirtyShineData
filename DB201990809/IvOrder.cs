@@ -26,5 +26,6 @@ namespace DB201990809
         public string Imgs { get; set; }
         public bool? IsPrint { get; set; }
         public int PrintStatus { get; set; }
+        public int? BusinessType { get; set; }
     }
 }

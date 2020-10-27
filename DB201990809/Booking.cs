@@ -88,5 +88,6 @@ namespace DB201990809
         public string BookingDynamoId { get; set; }
         public bool? IsAnonymous { get; set; }
         public int? SkinnerId { get; set; }
+        public string MetaData { get; set; }
     }
 }
