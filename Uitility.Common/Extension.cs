@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace ThirtyShine.InitData
+namespace ThirtyShine
 {
     public static class Extension
     {
