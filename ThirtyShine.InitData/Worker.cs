@@ -12,18 +12,14 @@ namespace ThirtyShine.InitData
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        private readonly IProcessing _processing;
-        public Worker(ILogger<Worker> logger, IProcessing processing)
+        public Worker(ILogger<Worker> logger)
         {
             _logger = logger;
-            _processing = processing;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            //var now = DateTime.UtcNow;
-            //var das = now.ToVietNameDateTime();
-            await S4MRepository.Handler();
+            await DB201990809Repository.Handler();
         }
     }
 }

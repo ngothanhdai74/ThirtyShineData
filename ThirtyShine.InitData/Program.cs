@@ -20,7 +20,6 @@ namespace ThirtyShine.InitData
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddTransient<IProcessing, Processing>();
                     services.AddHostedService<Worker>();
                 });
     }
