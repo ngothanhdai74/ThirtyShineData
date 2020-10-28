@@ -1,4 +1,5 @@
 ﻿using DB201990809;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ThirtyShine.InitData
     {
         public static async Task Handler()
         {
-            await CloneDataFromSalonToSalonAudit();
+            await QuerySalonAudit(123);
         }
         public static async Task CloneDataFromSalonToSalonAudit()
         {
@@ -96,6 +97,17 @@ namespace ThirtyShine.InitData
                         await transaction.RollbackAsync();
                     }
                 }
+            }
+        }
+        public static async Task QuerySalonAudit(int userId)
+        {
+            using (var db = new _20190809Context())
+            {
+                var data = from s in db.SalonAudit 
+                           where s.Id == userId
+                           select s;
+
+                var raw = data.ToSql();
             }
         }
     }
