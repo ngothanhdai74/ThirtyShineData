@@ -12,7 +12,7 @@ namespace ThirtyShine.InitData
     {
         public static async Task Handler()
         {
-            await QuerySalonAudit(123);
+            await MoveLinkFrom2019To2020();
         }
         public static async Task CloneDataFromSalonToSalonAudit()
         {
@@ -108,6 +108,13 @@ namespace ThirtyShine.InitData
                            select s;
 
                 var raw = data.ToSql();
+            }
+        }
+        public static async Task MoveLinkFrom2019To2020()
+        {
+            using (var db = new _20190809Context())
+            {
+                
             }
         }
     }
