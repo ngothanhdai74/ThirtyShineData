@@ -114,7 +114,43 @@ namespace ThirtyShine.InitData
         {
             using (var db = new _20190809Context())
             {
-                
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var kho2019 = db.PermissionMenu.First(m => m.Name.Equals("Kho 2019")
+                        && m.IsActive == true
+                        && m.IsDelete == false
+                        && m.Domain.Equals("https://inventory.30shine.com")
+                        && m.Pid == 0);
+                        var tktd = db.PermissionMenu.First(m => m.Name.Equals("Thống kê tiến độ") 
+                        && m.Pid == kho2019.Id
+                        && m.IsActive == true
+                        && m.IsDelete == false
+                        && m.Link.Equals("/admin/bao-cao-tien-do.html")
+                        && m.Domain.Equals("https://inventory.30shine.com")
+                        );
+                        var kho2020 = db.PermissionMenu.First(m => m.Name.Equals("Kho 2020")
+                        && m.IsActive == true
+                        && m.IsDelete == false
+                        && m.Pid == 0
+                        && m.Domain.Equals("https://inventory.30shine.com")
+                        );
+
+                        tktd.Pid = kho2020.Id;
+                        db.PermissionMenu.Update(tktd);
+                        if (db.SaveChanges() <= 0)
+                        {
+                            throw new Exception();
+                        }
+                        //================================================
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        await transaction.RollbackAsync();
+                    }
+                }
             }
         }
     }

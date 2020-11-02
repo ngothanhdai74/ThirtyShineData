@@ -14,6 +14,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S4M", "S4M\S4M.csproj", "{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Sql", "2.Sql", "{C662AA0B-301A-484A-8BF5-A8C4017986A6}"
+	ProjectSection(SolutionItems) = preProject
+		MoverLinkFrom2019To2020.sql = MoverLinkFrom2019To2020.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
