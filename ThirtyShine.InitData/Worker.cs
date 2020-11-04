@@ -25,6 +25,17 @@ namespace ThirtyShine.InitData
                 //await DB201990809Repository.MoveLinkFrom2019To2020();
                 var main = await Cognito.GetToken();
                 var s4m = await Cognito.GetTokenS4M();
+
+
+                var Tokenmain = main.AccessToken;
+
+
+
+
+
+
+                var tokenS4M = s4m.AccessToken;
+
             }
             catch (Exception  wx)
             {
