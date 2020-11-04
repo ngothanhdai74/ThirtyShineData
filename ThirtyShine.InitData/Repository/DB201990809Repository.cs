@@ -153,5 +153,30 @@ namespace ThirtyShine.InitData
                 }
             }
         }
+        public static async Task ConfigMenu()
+        {
+            using (var db = new _20190809Context())
+            {
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var kho2020 = db.PermissionMenu.First(m => m.Name.Equals("Kho 2020")
+                            && m.IsActive == true
+                            && m.IsDelete == false
+                            && m.Pid == 0
+                            && m.Domain.Equals("https://inventory.30shine.com")
+                            );
+
+                        //================================================
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        await transaction.RollbackAsync();
+                    }
+                }
+            }
+        }
     }
 }
