@@ -20,8 +20,18 @@ namespace ThirtyShine.InitData
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await DB201990809Repository.MoveLinkFrom2019To2020();
-            //await Cognito.GetToken();
+            try
+            {
+                //await DB201990809Repository.MoveLinkFrom2019To2020();
+                var main = await Cognito.GetToken();
+                var s4m = await Cognito.GetTokenS4M();
+            }
+            catch (Exception  wx)
+            {
+
+                throw;
+            }
+
         }
     }
 }
