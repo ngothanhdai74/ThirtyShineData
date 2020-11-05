@@ -103,7 +103,7 @@ namespace ThirtyShine.InitData
         {
             using (var db = new _20190809Context())
             {
-                var data = from s in db.SalonAudit 
+                var data = from s in db.SalonAudit
                            where s.Id == userId
                            select s;
 
@@ -123,7 +123,7 @@ namespace ThirtyShine.InitData
                         && m.IsDelete == false
                         && m.Domain.Equals("https://inventory.30shine.com")
                         && m.Pid == 0);
-                        var tktd = db.PermissionMenu.First(m => m.Name.Equals("Thống kê tiến độ") 
+                        var tktd = db.PermissionMenu.First(m => m.Name.Equals("Thống kê tiến độ")
                         && m.Pid == kho2019.Id
                         && m.IsActive == true
                         && m.IsDelete == false
@@ -153,7 +153,7 @@ namespace ThirtyShine.InitData
                 }
             }
         }
-        public static async Task ConfigMenu()
+        public static async Task ConfigMenuKho2020Inventory(string link, string name)
         {
             using (var db = new _20190809Context())
             {
@@ -168,6 +168,37 @@ namespace ThirtyShine.InitData
                             && m.Domain.Equals("https://inventory.30shine.com")
                             );
 
+                        var travattu = db.PermissionMenu.Add(new PermissionMenu()
+                        {
+                            Name = name,
+                            Pid = kho2020.Id,
+                            Link = link,
+                            PageId = link,
+                            IsActive = true,
+                            IsDelete = false,
+                            CreatedTime = DateTime.UtcNow,
+                            ModifiedTime = DateTime.UtcNow,
+                            Domain = "https://inventory.30shine.com"
+                        });
+                        if (db.SaveChanges() <= 0)
+                        {
+                            throw new Exception();
+                        }
+                        var menu = db.PermissionMenu.First(m => m.Name.Equals(name) && m.Link.Equals(link));
+
+                        var permissionMenuAction = new PermissionMenuAction()
+                        {
+                            PageId = menu.Id,
+                            PermissionId = 7,
+                            ActionId = 1,
+                            IsActive = true,
+                            IsDelete = false
+                        };
+                        db.PermissionMenuAction.Add(permissionMenuAction);
+                        if (db.SaveChanges() <= 0)
+                        {
+                            throw new Exception();
+                        }
                         //================================================
                         await transaction.CommitAsync();
                     }
