@@ -51,5 +51,6 @@ namespace DB201990809
         public string ParkingMap { get; set; }
         public int? MaxPeopleCount { get; set; }
         public string PackingNote { get; set; }
+        public string EmbedMap { get; set; }
     }
 }

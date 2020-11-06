@@ -14,6 +14,10 @@
    "Tables": [
       {
          "HasPrimaryKey": true,
+         "Name": "[dba].[lock_block]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[_staff_working_state]"
       },
       {
@@ -75,6 +79,10 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[BillConfirm]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BillDiscount]"
       },
       {
          "HasPrimaryKey": true,
@@ -163,6 +171,10 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[BookingRequest]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BookingSelectedItems]"
       },
       {
          "HasPrimaryKey": true,
@@ -346,6 +358,10 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[DCustomerQueueInfo]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[DCustomerScore]"
       },
       {
@@ -458,6 +474,10 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[FlowTimeKeepinghis_bk20200731]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[Fund_AccountType]"
       },
       {
@@ -542,6 +562,14 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[IvGroupQuantifyProductV2]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[IvGroupQuantifyV2]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[IvInventory]"
       },
       {
@@ -622,7 +650,15 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[IvProductQuantifyV2]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[IvRouting]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[IvServiceQuantifyV2]"
       },
       {
          "HasPrimaryKey": true,
@@ -783,6 +819,10 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[NotificationUsers]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[NotificationUsers191113]"
       },
       {
          "HasPrimaryKey": true,
@@ -987,6 +1027,10 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[SalonProduct]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[SalonRanking]"
       },
       {
          "HasPrimaryKey": true,
@@ -1210,6 +1254,10 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[StaticExpense_V2]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[StaticOperate]"
       },
       {
@@ -1314,6 +1362,18 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[StynextBill]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[StynextGroup]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[StynextGroupMember]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[StynextKpiConfig]"
       },
       {
@@ -1326,11 +1386,19 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[StynextSalaryConfig]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[StynextSalonLevelConfig]"
       },
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[StynextServiceSalaryConfig]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[StynextStaticData]"
       },
       {
          "HasPrimaryKey": true,
@@ -1375,6 +1443,10 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[Tbl_Category]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Tbl_Category_bk20200424]"
       },
       {
          "HasPrimaryKey": true,
@@ -1487,6 +1559,10 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[TimekeepingConfig]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[TimekeepingSuggestionStaticData]"
       },
       {
          "HasPrimaryKey": true,

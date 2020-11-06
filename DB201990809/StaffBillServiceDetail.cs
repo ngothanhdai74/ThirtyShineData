@@ -26,5 +26,6 @@ namespace DB201990809
         public double ConventionPoint { get; set; }
         public double? ServiceBonus { get; set; }
         public int BillSalonId { get; set; }
+        public int? OvertimeStatusValueNew { get; set; }
     }
 }

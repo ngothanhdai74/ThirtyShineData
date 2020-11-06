@@ -30,6 +30,7 @@ namespace DB201990809
         public virtual DbSet<Authorization> Authorization { get; set; }
         public virtual DbSet<BackupTableServiceSalonConfig> BackupTableServiceSalonConfig { get; set; }
         public virtual DbSet<BillConfirm> BillConfirm { get; set; }
+        public virtual DbSet<BillDiscount> BillDiscount { get; set; }
         public virtual DbSet<BillService> BillService { get; set; }
         public virtual DbSet<BillServiceHis> BillServiceHis { get; set; }
         public virtual DbSet<BillServiceHisOld> BillServiceHisOld { get; set; }
@@ -48,6 +49,7 @@ namespace DB201990809
         public virtual DbSet<BookingLog> BookingLog { get; set; }
         public virtual DbSet<BookingRequest> BookingRequest { get; set; }
         public virtual DbSet<BookingSalonBackup> BookingSalonBackup { get; set; }
+        public virtual DbSet<BookingSelectedItems> BookingSelectedItems { get; set; }
         public virtual DbSet<BookingSlotAvailable> BookingSlotAvailable { get; set; }
         public virtual DbSet<BookingSlotTotal> BookingSlotTotal { get; set; }
         public virtual DbSet<BookingSpecialOptionTick> BookingSpecialOptionTick { get; set; }
@@ -98,6 +100,7 @@ namespace DB201990809
         public virtual DbSet<DcustomerInfo> DcustomerInfo { get; set; }
         public virtual DbSet<DcustomerProduct> DcustomerProduct { get; set; }
         public virtual DbSet<DcustomerProductTotal> DcustomerProductTotal { get; set; }
+        public virtual DbSet<DcustomerQueueInfo> DcustomerQueueInfo { get; set; }
         public virtual DbSet<DcustomerScore> DcustomerScore { get; set; }
         public virtual DbSet<DcustomerService> DcustomerService { get; set; }
         public virtual DbSet<DcustomerServiceTotal> DcustomerServiceTotal { get; set; }
@@ -126,6 +129,7 @@ namespace DB201990809
         public virtual DbSet<FlowStaff> FlowStaff { get; set; }
         public virtual DbSet<FlowTimeKeeping> FlowTimeKeeping { get; set; }
         public virtual DbSet<FlowTimeKeepingHis> FlowTimeKeepingHis { get; set; }
+        public virtual DbSet<FlowTimeKeepinghisBk20200731> FlowTimeKeepinghisBk20200731 { get; set; }
         public virtual DbSet<FundAccountType> FundAccountType { get; set; }
         public virtual DbSet<FundImport> FundImport { get; set; }
         public virtual DbSet<FundItemFlow> FundItemFlow { get; set; }
@@ -147,6 +151,8 @@ namespace DB201990809
         public virtual DbSet<InventoryImport> InventoryImport { get; set; }
         public virtual DbSet<IvCheckOut> IvCheckOut { get; set; }
         public virtual DbSet<IvCheckOutDetail> IvCheckOutDetail { get; set; }
+        public virtual DbSet<IvGroupQuantifyProductV2> IvGroupQuantifyProductV2 { get; set; }
+        public virtual DbSet<IvGroupQuantifyV2> IvGroupQuantifyV2 { get; set; }
         public virtual DbSet<IvInventory> IvInventory { get; set; }
         public virtual DbSet<IvInventoryCheckLog> IvInventoryCheckLog { get; set; }
         public virtual DbSet<IvInventoryCheckTime> IvInventoryCheckTime { get; set; }
@@ -167,7 +173,9 @@ namespace DB201990809
         public virtual DbSet<IvOrderDetail> IvOrderDetail { get; set; }
         public virtual DbSet<IvOrderNum> IvOrderNum { get; set; }
         public virtual DbSet<IvProductQuantify> IvProductQuantify { get; set; }
+        public virtual DbSet<IvProductQuantifyV2> IvProductQuantifyV2 { get; set; }
         public virtual DbSet<IvRouting> IvRouting { get; set; }
+        public virtual DbSet<IvServiceQuantifyV2> IvServiceQuantifyV2 { get; set; }
         public virtual DbSet<IvStatisticsProductSold> IvStatisticsProductSold { get; set; }
         public virtual DbSet<KcsCheck3S> KcsCheck3S { get; set; }
         public virtual DbSet<KcsFaceType> KcsFaceType { get; set; }
@@ -183,6 +191,7 @@ namespace DB201990809
         public virtual DbSet<KpiPropertyPoints> KpiPropertyPoints { get; set; }
         public virtual DbSet<KpiSalonPoints> KpiSalonPoints { get; set; }
         public virtual DbSet<KpiSalons> KpiSalons { get; set; }
+        public virtual DbSet<LockBlock> LockBlock { get; set; }
         public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<ManagerLog> ManagerLog { get; set; }
         public virtual DbSet<ManagerLogBefore> ManagerLogBefore { get; set; }
@@ -208,6 +217,7 @@ namespace DB201990809
         public virtual DbSet<NetworkOperator> NetworkOperator { get; set; }
         public virtual DbSet<NotificationManagement> NotificationManagement { get; set; }
         public virtual DbSet<NotificationUsers> NotificationUsers { get; set; }
+        public virtual DbSet<NotificationUsers191113> NotificationUsers191113 { get; set; }
         public virtual DbSet<NotificationUsersBk> NotificationUsersBk { get; set; }
         public virtual DbSet<OperationReportConfig> OperationReportConfig { get; set; }
         public virtual DbSet<OperationReportStatistic> OperationReportStatistic { get; set; }
@@ -258,6 +268,7 @@ namespace DB201990809
         public virtual DbSet<SalonEquipment> SalonEquipment { get; set; }
         public virtual DbSet<SalonEquipmentChange> SalonEquipmentChange { get; set; }
         public virtual DbSet<SalonProduct> SalonProduct { get; set; }
+        public virtual DbSet<SalonRanking> SalonRanking { get; set; }
         public virtual DbSet<SalonService> SalonService { get; set; }
         public virtual DbSet<SalonTarget> SalonTarget { get; set; }
         public virtual DbSet<SalonTypeConfig> SalonTypeConfig { get; set; }
@@ -315,6 +326,7 @@ namespace DB201990809
         public virtual DbSet<StaffWorkingState> StaffWorkingState { get; set; }
         public virtual DbSet<StaticCustomer> StaticCustomer { get; set; }
         public virtual DbSet<StaticExpense> StaticExpense { get; set; }
+        public virtual DbSet<StaticExpenseV2> StaticExpenseV2 { get; set; }
         public virtual DbSet<StaticOperate> StaticOperate { get; set; }
         public virtual DbSet<StaticRatingWaitTime> StaticRatingWaitTime { get; set; }
         public virtual DbSet<StaticServicesProfit> StaticServicesProfit { get; set; }
@@ -341,11 +353,16 @@ namespace DB201990809
         public virtual DbSet<Stylist4MenStudent> Stylist4MenStudent { get; set; }
         public virtual DbSet<Stylist4MenStudyPackage> Stylist4MenStudyPackage { get; set; }
         public virtual DbSet<Stylist4MenTuition> Stylist4MenTuition { get; set; }
+        public virtual DbSet<StynextBill> StynextBill { get; set; }
+        public virtual DbSet<StynextGroup> StynextGroup { get; set; }
+        public virtual DbSet<StynextGroupMember> StynextGroupMember { get; set; }
         public virtual DbSet<StynextKpiConfig> StynextKpiConfig { get; set; }
         public virtual DbSet<StynextLevelConfig> StynextLevelConfig { get; set; }
         public virtual DbSet<StynextLevelKpiConfig> StynextLevelKpiConfig { get; set; }
+        public virtual DbSet<StynextSalaryConfig> StynextSalaryConfig { get; set; }
         public virtual DbSet<StynextSalonLevelConfig> StynextSalonLevelConfig { get; set; }
         public virtual DbSet<StynextServiceSalaryConfig> StynextServiceSalaryConfig { get; set; }
+        public virtual DbSet<StynextStaticData> StynextStaticData { get; set; }
         public virtual DbSet<StynextStaticProduct> StynextStaticProduct { get; set; }
         public virtual DbSet<StynextStaticService> StynextStaticService { get; set; }
         public virtual DbSet<StynextTarget> StynextTarget { get; set; }
@@ -357,6 +374,7 @@ namespace DB201990809
         public virtual DbSet<TargetHighlightSalons> TargetHighlightSalons { get; set; }
         public virtual DbSet<TargetHighlights> TargetHighlights { get; set; }
         public virtual DbSet<TblCategory> TblCategory { get; set; }
+        public virtual DbSet<TblCategoryBk20200424> TblCategoryBk20200424 { get; set; }
         public virtual DbSet<TblConfig> TblConfig { get; set; }
         public virtual DbSet<TblConfigWorkDays> TblConfigWorkDays { get; set; }
         public virtual DbSet<TblCusInputBooking> TblCusInputBooking { get; set; }
@@ -385,6 +403,7 @@ namespace DB201990809
         public virtual DbSet<TblTesst> TblTesst { get; set; }
         public virtual DbSet<TeamService> TeamService { get; set; }
         public virtual DbSet<TimekeepingConfig> TimekeepingConfig { get; set; }
+        public virtual DbSet<TimekeepingSuggestionStaticData> TimekeepingSuggestionStaticData { get; set; }
         public virtual DbSet<TinhThanh> TinhThanh { get; set; }
         public virtual DbSet<TopSalary> TopSalary { get; set; }
         public virtual DbSet<TrackingWebData> TrackingWebData { get; set; }
@@ -748,6 +767,27 @@ namespace DB201990809
                     .HasName("IDX_125754_125753_Solution_30shinedboBillConfirm");
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<BillDiscount>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.DiscountReason).HasMaxLength(300);
+
+                entity.Property(e => e.DiscountSource)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.IsAddedBySalon).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.IsDeleted).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             });
@@ -1672,6 +1712,17 @@ namespace DB201990809
                 entity.Property(e => e.MigrateStatus).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.Uid).HasDefaultValueSql("(newid())");
+            });
+
+            modelBuilder.Entity<BookingSelectedItems>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<BookingSlotAvailable>(entity =>
@@ -2742,6 +2793,28 @@ namespace DB201990809
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             });
 
+            modelBuilder.Entity<DcustomerQueueInfo>(entity =>
+            {
+                entity.HasKey(e => e.MessageId);
+
+                entity.ToTable("DCustomerQueueInfo");
+
+                entity.Property(e => e.MessageId)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.MessageContent)
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.QueueInfo).HasMaxLength(200);
+            });
+
             modelBuilder.Entity<DcustomerScore>(entity =>
             {
                 entity.HasKey(e => new { e.IdCustomerScore, e.BillId });
@@ -3284,6 +3357,21 @@ namespace DB201990809
                 entity.Property(e => e.WorkDate).HasColumnType("date");
             });
 
+            modelBuilder.Entity<FlowTimeKeepinghisBk20200731>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("FlowTimeKeepinghis_bk20200731");
+
+                entity.Property(e => e.CheckinFirstTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CheckoutLastTime).HasColumnType("datetime");
+
+                entity.Property(e => e.HourIds).HasMaxLength(200);
+
+                entity.Property(e => e.WorkDate).HasColumnType("date");
+            });
+
             modelBuilder.Entity<FundAccountType>(entity =>
             {
                 entity.ToTable("Fund_AccountType");
@@ -3641,6 +3729,22 @@ namespace DB201990809
                     .HasName("IDX_9624_9623_Solution_30shinedboIvCheckOutDetail");
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<IvGroupQuantifyProductV2>(entity =>
+            {
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<IvGroupQuantifyV2>(entity =>
+            {
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.GroupName).HasMaxLength(200);
 
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             });
@@ -4127,6 +4231,13 @@ namespace DB201990809
                 entity.Property(e => e.Volume).HasDefaultValueSql("((0))");
             });
 
+            modelBuilder.Entity<IvProductQuantifyV2>(entity =>
+            {
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            });
+
             modelBuilder.Entity<IvRouting>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -4138,6 +4249,13 @@ namespace DB201990809
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.RoutingName).HasMaxLength(200);
+            });
+
+            modelBuilder.Entity<IvServiceQuantifyV2>(entity =>
+            {
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<IvStatisticsProductSold>(entity =>
@@ -4578,6 +4696,46 @@ namespace DB201990809
                     .HasColumnType("datetime");
 
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<LockBlock>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("lock_block", "dba");
+
+                entity.Property(e => e.BlockedSessionId).HasColumnName("BlockedSessionID");
+
+                entity.Property(e => e.BlockedSessionSqlhandle)
+                    .HasColumnName("BlockedSession_SQLHandle")
+                    .HasMaxLength(64);
+
+                entity.Property(e => e.BlockedSessionTsql).HasColumnName("BlockedSession_TSQL");
+
+                entity.Property(e => e.BlockingSessionApplicationName)
+                    .HasColumnName("BlockingSession_ApplicationName")
+                    .HasMaxLength(128);
+
+                entity.Property(e => e.BlockingSessionHostName)
+                    .HasColumnName("BlockingSession_HostName")
+                    .HasMaxLength(128);
+
+                entity.Property(e => e.BlockingSessionId).HasColumnName("BlockingSessionID");
+
+                entity.Property(e => e.BlockingSessionLoginName)
+                    .IsRequired()
+                    .HasColumnName("BlockingSession_LoginName")
+                    .HasMaxLength(128);
+
+                entity.Property(e => e.BlockingSessionSqlhandle)
+                    .HasColumnName("BlockingSession_SQLHandle")
+                    .HasMaxLength(64);
+
+                entity.Property(e => e.BlockingSessionTsql).HasColumnName("BlockingSession_TSQL");
+
+                entity.Property(e => e.Date)
+                    .HasColumnName("date")
+                    .HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Log>(entity =>
@@ -5122,6 +5280,19 @@ namespace DB201990809
                     .HasName("IDX_191115_1_NotificationUsers");
 
                 entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.SlugKey).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<NotificationUsers191113>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
 
@@ -5898,6 +6069,8 @@ namespace DB201990809
 
             modelBuilder.Entity<SalonAudit>(entity =>
             {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
@@ -5971,6 +6144,19 @@ namespace DB201990809
                 entity.Property(e => e.IsFrezze).HasColumnName("isFrezze");
 
                 entity.Property(e => e.IsUse).HasDefaultValueSql("((0))");
+            });
+
+            modelBuilder.Entity<SalonRanking>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.WorkDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<SalonService>(entity =>
@@ -7448,6 +7634,97 @@ namespace DB201990809
                 entity.Property(e => e.WorkDate).HasColumnType("date");
             });
 
+            modelBuilder.Entity<StaticExpenseV2>(entity =>
+            {
+                entity.ToTable("StaticExpense_V2");
+
+                entity.Property(e => e.CapitalSpending).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.Compensation).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.DirectFee).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ElectricityAndWaterBill).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.IncomeTaxes).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.InternetAndPhoneBill).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.Itexpense).HasColumnName("ITExpense");
+
+                entity.Property(e => e.Lngall30shine).HasColumnName("LNGAll30shine");
+
+                entity.Property(e => e.ManageFee).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.MigrateStatus).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.Mktexpense).HasColumnName("MKTExpense");
+
+                entity.Property(e => e.ModifyTime).HasColumnType("datetime");
+
+                entity.Property(e => e.NumberOfTurns).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.OfficeRentAndServiceCose).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.OfficeStaffSalary).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.OfficeStaffSocialInsurance).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.RentWithTax).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.SalaryServicePerServiceIncome).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.SalesSalary).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.SalonFee).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.SalonUnplannedSpending).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ShippingExpend).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ShortName)
+                    .HasMaxLength(20)
+                    .IsFixedLength();
+
+                entity.Property(e => e.SocialInsuranceAndFixedCost).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.Tax).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.TotalDailyCostInventory).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.TotalIncomeAfterTax).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.TotalPayOffKcs)
+                    .HasColumnName("TotalPayOffKCS")
+                    .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.TotalProductCapital).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.TotalProductPerCus).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.TotalProductSm).HasColumnName("TotalProductSM");
+
+                entity.Property(e => e.TotalServicePerCus).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.TotalSmdistributionToday).HasColumnName("TotalSMDistributionToday");
+
+                entity.Property(e => e.TotalSmdistributon).HasColumnName("TotalSMDistributon");
+
+                entity.Property(e => e.TotalSmsexpenses)
+                    .HasColumnName("TotalSMSExpenses")
+                    .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.TotalTransactionPerCus).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.Uid).HasDefaultValueSql("(newid())");
+
+                entity.Property(e => e.UnplannedSpending).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.WorkDate).HasColumnType("date");
+            });
+
             modelBuilder.Entity<StaticOperate>(entity =>
             {
                 entity.Property(e => e.CreatedTime).HasColumnType("datetime");
@@ -8209,6 +8486,49 @@ namespace DB201990809
                 entity.Property(e => e.Uid).HasDefaultValueSql("(newid())");
             });
 
+            modelBuilder.Entity<StynextBill>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.BillDate).HasColumnType("date");
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.ReturnDate).HasColumnType("date");
+            });
+
+            modelBuilder.Entity<StynextGroup>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.IsDeleted).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<StynextGroupMember>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.IsDeleted).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.IsGroupLeader).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+            });
+
             modelBuilder.Entity<StynextKpiConfig>(entity =>
             {
                 entity.Property(e => e.KpiName)
@@ -8234,6 +8554,17 @@ namespace DB201990809
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<StynextSalaryConfig>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+            });
+
             modelBuilder.Entity<StynextSalonLevelConfig>(entity =>
             {
                 entity.Property(e => e.R30kpiWeight).HasColumnName("R30KpiWeight");
@@ -8244,6 +8575,37 @@ namespace DB201990809
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<StynextStaticData>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.FixedSalary).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.FixedSalaryTest).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.GuaranteeServiceCommission).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.OvertimeDayServiceRevenue).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.OvertimeHourServiceRevenue).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ProductCommission).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ProductRevenue).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ServiceCommission).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ServiceRevenue).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.WorkDate).HasColumnType("date");
             });
 
             modelBuilder.Entity<StynextStaticProduct>(entity =>
@@ -8393,6 +8755,23 @@ namespace DB201990809
                 entity.Property(e => e.Thumb).HasMaxLength(400);
 
                 entity.Property(e => e.Uid).HasDefaultValueSql("(newid())");
+            });
+
+            modelBuilder.Entity<TblCategoryBk20200424>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Tbl_Category_bk20200424");
+
+                entity.Property(e => e.Description).HasMaxLength(600);
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Meta).HasMaxLength(600);
+
+                entity.Property(e => e.Name).HasMaxLength(200);
+
+                entity.Property(e => e.Thumb).HasMaxLength(400);
             });
 
             modelBuilder.Entity<TblConfig>(entity =>
@@ -8836,6 +9215,8 @@ namespace DB201990809
 
                 entity.Property(e => e.Email).HasMaxLength(300);
 
+                entity.Property(e => e.EmbedMap).HasMaxLength(500);
+
                 entity.Property(e => e.Fanpage).HasMaxLength(300);
 
                 entity.Property(e => e.FanpageId).HasMaxLength(50);
@@ -8985,6 +9366,23 @@ namespace DB201990809
                 entity.Property(e => e.CreatedTime).HasColumnType("datetime");
 
                 entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<TimekeepingSuggestionStaticData>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.IsDeleted).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Weekday).HasMaxLength(30);
+
+                entity.Property(e => e.WorkDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<TinhThanh>(entity =>

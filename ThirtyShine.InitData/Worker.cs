@@ -20,18 +20,8 @@ namespace ThirtyShine.InitData
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            try
-            {
-                await DB201990809Repository.ConfigMenuKho2020Inventory("/admin/danh-sach-vat-tu-theo-nhom.html", "(Cung ứng)Danh sách vật tư theo nhóm");
-                await DB201990809Repository.ConfigMenuKho2020Inventory("/admin/cau-hinh-dinh-luong-goi-dich-vu.html", "(Cung ứng)Cấu hình định lượng gói dịch vụ");
-
-            }
-            catch (Exception  wx)
-            {
-
-                throw;
-            }
-
+            var data= await Cognito.GetToken();
+            var res = await Cognito.RefreshToken(data.RefreshToken, data.AccessToken, data.IdToken);
         }
     }
 }
