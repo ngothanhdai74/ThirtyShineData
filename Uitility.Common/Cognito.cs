@@ -48,7 +48,7 @@ namespace Uitility
             return response.AuthenticationResult;
         }
 
-        public static async Task<AuthenticationResultType> RefreshToken(string refreshToken, string accessToken, string idToken)
+        public static async Task<AuthenticationResultType> RefreshToken(string refreshToken)
         {
             try
             {
@@ -59,14 +59,14 @@ namespace Uitility
                     ClientId = _clientId,
                     AuthFlow = AuthFlowType.REFRESH_TOKEN_AUTH
                 };
-                request.AuthParameters.Add("REFRESH_TOKEN", refreshToken + "s");
+                request.AuthParameters.Add("REFRESH_TOKEN", refreshToken);
                 var result = await cognito.AdminInitiateAuthAsync(request);
                 return result.AuthenticationResult;
             }
             catch (Exception ex)
             {
+                return null;
             }
-            return null;
         }
     }
 }
