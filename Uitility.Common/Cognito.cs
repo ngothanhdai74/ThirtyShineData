@@ -4,6 +4,7 @@ using Amazon.CognitoIdentityProvider.Model;
 using Amazon.Runtime;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,20 +45,38 @@ namespace Uitility
         {
             try
             {
-                var cognito = new AmazonCognitoIdentityProviderClient( _region);
+                var cognito = new AmazonCognitoIdentityProviderClient(_region);
 
                 var request = new AdminInitiateAuthRequest
                 {
                     UserPoolId = UserPoolId_Daihu,
                     ClientId = _clientIdDaihu,
-                    
+
                     AuthFlow = AuthFlowType.ADMIN_USER_PASSWORD_AUTH
                 };
                 request.AuthParameters.Add("USERNAME", userName);
                 request.AuthParameters.Add("PASSWORD", password);
 
                 var response = await cognito.AdminInitiateAuthAsync(request);
+
+
+                var req = new VerifySoftwareTokenRequest();
+                req.AccessToken = response.AuthenticationResult.AccessToken;
+
+                var token = new JwtSecurityToken(req.AccessToken);
+
+                var now = DateTime.UtcNow;
+                var expire = token.ValidTo;
+
+                var das = await cognito.VerifySoftwareTokenAsync(req);
+                
                 return response.AuthenticationResult;
+
+
+            }
+            catch (InvalidParameterException ex)
+            {
+                throw;
             }
             catch (Exception ex)
             {
