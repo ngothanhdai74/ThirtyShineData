@@ -4,6 +4,7 @@ using Amazon.CognitoIdentityProvider.Model;
 using Amazon.Runtime;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,12 +22,29 @@ namespace Uitility
         private static string _clientIdDaihu = "3vqo4o9t8mrhpr03h5uhljs9r7";
         //
         private static readonly RegionEndpoint _region = RegionEndpoint.APSoutheast1;
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
         public static async Task<AuthenticationResultType> GetTokenDaihu(string userName = "daint", string password = "Davidkmhd!1")
         {
             try
             {
-                var cognito = new AmazonCognitoIdentityProviderClient("AKIAXYSC5RKSGJC2KKMW", "v4XW6SqYQDaybgFBf8BJVysGd6kSS4DY36fekN3c", _region);
-
+                var cognito = new AmazonCognitoIdentityProviderClient( _region);
 
                 var request = new AdminInitiateAuthRequest
                 {
