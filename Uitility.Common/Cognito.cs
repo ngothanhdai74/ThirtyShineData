@@ -60,15 +60,13 @@ namespace Uitility
                 var response = await cognito.AdminInitiateAuthAsync(request);
 
 
-                var req = new VerifySoftwareTokenRequest();
-                req.AccessToken = response.AuthenticationResult.AccessToken;
 
-                var token = new JwtSecurityToken(req.AccessToken);
+                var accesstoken = new JwtSecurityToken(response.AuthenticationResult.AccessToken);
+                var idtoken = new JwtSecurityToken(response.AuthenticationResult.IdToken);
 
                 var now = DateTime.UtcNow;
-                var expire = token.ValidTo;
+                var expire = accesstoken.ValidTo;
 
-                var das = await cognito.VerifySoftwareTokenAsync(req);
                 
                 return response.AuthenticationResult;
 
