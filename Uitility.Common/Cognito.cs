@@ -66,8 +66,8 @@ namespace Uitility
 
                 var now = DateTime.UtcNow;
                 var expire = accesstoken.ValidTo;
+                var value = expire - now;
 
-                
                 return response.AuthenticationResult;
 
 
