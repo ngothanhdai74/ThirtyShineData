@@ -28,6 +28,10 @@ namespace Repository.Implements
                     // handler data
                     foreach (var item in data)
                     {
+                        int serviceCount = await CalculateServiceCount(salonId: 1);
+                        decimal quantify = await CalculateQuantify(serviceId: 1);
+                        decimal inventoryRemain = item.Begin.GetValueOrDefault() + item.Import.GetValueOrDefault() - item.Export.GetValueOrDefault() - serviceCount * quantify;
+
 
                     }
                     //
@@ -37,6 +41,15 @@ namespace Repository.Implements
                 }
             }
         }
+        private async Task<int> CalculateServiceCount(int salonId)
+        {
 
+            return -1;
+        }
+        private async Task<decimal> CalculateQuantify(int serviceId)
+        {
+
+            return -1;
+        }
     }
 }
