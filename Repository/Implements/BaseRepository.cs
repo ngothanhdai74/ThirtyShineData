@@ -77,6 +77,7 @@ namespace Repository.Implements
             }
         }
         #endregion
+        #region Function Helper
         public async Task Process(Action<IList<TModel>> action, int pageSize = 100)
         {
             var pageIndex = 0;
@@ -97,5 +98,7 @@ namespace Repository.Implements
                 }
             }
         }
+        #endregion
+
     }
 }
