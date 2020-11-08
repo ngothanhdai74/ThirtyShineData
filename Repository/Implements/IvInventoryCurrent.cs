@@ -45,8 +45,7 @@ namespace Repository.Implements
                             }
                         }
                         //tự động tạo đơn trả từ kho tổng về kho salon
-                        
-
+                        var result = await CreateOrder(order);
                         //
                     }
 
@@ -79,6 +78,19 @@ namespace Repository.Implements
                     paging = new Paging(pageIndex, pageSize);
                     data = await QueryAsync(paging);
                 }
+            }
+        }
+        private async Task<bool> CreateOrder(SuppliesOrder order)
+        {
+            try
+            {
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
         }
         private async Task<decimal> GetMaxInventory(int productId)

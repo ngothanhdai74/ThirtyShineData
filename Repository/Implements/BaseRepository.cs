@@ -77,5 +77,25 @@ namespace Repository.Implements
             }
         }
         #endregion
+        public async Task Process(Action<IList<TModel>> action, int pageSize = 100)
+        {
+            var pageIndex = 0;
+            var paging = new Paging(pageIndex, pageSize);
+            var data = await QueryAsync(paging);
+
+            if (data?.Any() == true)
+            {
+                var totalPage = paging.TotalRow / pageSize + (paging.TotalRow % pageSize == 0 ? 0 : 1);
+                while (pageIndex < totalPage)
+                {
+                    // handler data
+                    action.Invoke(data);
+                    //
+                    pageIndex++;
+                    paging = new Paging(pageIndex, pageSize);
+                    data = await QueryAsync(paging);
+                }
+            }
+        }
     }
 }
