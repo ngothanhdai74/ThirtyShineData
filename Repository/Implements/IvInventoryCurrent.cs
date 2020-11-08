@@ -26,7 +26,10 @@ namespace Repository.Implements
                 while (pageIndex < totalPage)
                 {
                     // handler data
+                    foreach (var item in data)
+                    {
 
+                    }
                     //
                     pageIndex++;
                     paging = new Paging(pageIndex, pageSize);
