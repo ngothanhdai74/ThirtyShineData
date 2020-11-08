@@ -90,7 +90,7 @@ namespace Repository.Implements
                 while (pageIndex < totalPage)
                 {
                     // handler data
-                    action.Invoke(data);
+                    action(data);
                     //
                     pageIndex++;
                     paging = new Paging(pageIndex, pageSize);
