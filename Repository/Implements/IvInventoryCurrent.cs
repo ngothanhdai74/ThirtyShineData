@@ -53,7 +53,6 @@ namespace Repository.Implements
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
