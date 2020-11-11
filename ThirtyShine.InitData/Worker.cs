@@ -20,9 +20,10 @@ namespace ThirtyShine.InitData
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            
-            var res = await Cognito.GetTokenDaihu();
-            var asd = await Cognito.RefreshToken(res.RefreshToken);
+
+            //var res = await Cognito.GetTokenDaihu();
+            //var asd = await Cognito.RefreshToken(res.RefreshToken);
+             await Cognito.GetCredsAsync();
         }
 
 
