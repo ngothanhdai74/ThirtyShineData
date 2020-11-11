@@ -131,8 +131,8 @@ namespace Uitility
                 var cognito = new AmazonCognitoIdentityProviderClient(_region);
                 var request = new AdminInitiateAuthRequest
                 {
-                    UserPoolId = UserPoolId,
-                    ClientId = _clientId,
+                    UserPoolId = UserPoolId_Daihu,
+                    ClientId = _clientIdDaihu,
                     AuthFlow = AuthFlowType.REFRESH_TOKEN_AUTH
                 };
                 request.AuthParameters.Add("REFRESH_TOKEN", refreshToken);
