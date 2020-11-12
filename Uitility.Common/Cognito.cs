@@ -187,7 +187,7 @@ namespace Uitility
                     AuthFlowType = AuthFlowType.REFRESH_TOKEN_AUTH
                 };
 
-                AuthFlowResponse authResponse = await user.StartWithRefreshTokenAuthAsync(refreshRequest).ConfigureAwait(false);
+                AuthFlowResponse authResponse = await user.StartWithRefreshTokenAuthAsync(refreshRequest);
                 return authResponse.AuthenticationResult;
             }
             catch (Exception ex)
