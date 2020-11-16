@@ -24,8 +24,7 @@ namespace ThirtyShine.InitData
 
             //var res = await Cognito.GetTokenDaihu();
             //var asd = await Cognito.RefreshToken(res.RefreshToken);
-             var res = await Cognito.GetTokenDaihuyen();
-            var ass = await Cognito.RefreshTokenDaihuyen(res);
+             var res = await Cognito.GetToken();
         }
 
 

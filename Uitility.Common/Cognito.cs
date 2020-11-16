@@ -15,8 +15,9 @@ namespace Uitility
 {
     public static class Cognito
     {
-        private static string _clientId = "6h7e1s1m2njn1geiqgg0520mpk";
         private static string UserPoolId = "ap-southeast-1_4H2wwCXxU";
+        private static string _clientId = "6h7e1s1m2njn1geiqgg0520mpk";
+        private static string _clientSecret = "g21v4ngrrooajv13seqt4eka4d8tl7grb2g0mmgcvfk2jm97slp";
         //
         private static string UserPoolId_S4M = "ap-southeast-1_vKbNt46E8";
         private static string _clientIdS4M = "6ha1psvpgbmq0p2q7e42pkp9rj";
@@ -152,8 +153,8 @@ namespace Uitility
             {
                 // get new token
                 AmazonCognitoIdentityProviderClient provider = new AmazonCognitoIdentityProviderClient(_region);
-                CognitoUserPool userPool = new CognitoUserPool(UserPoolId_Daihu, _clientIdDaihu, provider);
-                CognitoUser user = new CognitoUser(userName, _clientIdDaihu, userPool, provider, _clientSecretDaihu);
+                CognitoUserPool userPool = new CognitoUserPool(UserPoolId, _clientId, provider);
+                CognitoUser user = new CognitoUser(userName, _clientId, userPool, provider);
                 InitiateSrpAuthRequest authRequest = new InitiateSrpAuthRequest()
                 {
                     Password = password,
@@ -177,8 +178,8 @@ namespace Uitility
                 string userName = idtoken.Claims.FirstOrDefault(m => m.Type.Equals("cognito:username"))?.Value;
                 // get new token
                 AmazonCognitoIdentityProviderClient provider = new AmazonCognitoIdentityProviderClient(_region);
-                CognitoUserPool userPool = new CognitoUserPool(UserPoolId_Daihu, _clientIdDaihu, provider);
-                CognitoUser user = new CognitoUser(userName, _clientIdDaihu, userPool, provider, _clientSecretDaihu)
+                CognitoUserPool userPool = new CognitoUserPool(UserPoolId, _clientId, provider);
+                CognitoUser user = new CognitoUser(userName, _clientId, userPool, provider, _clientSecret)
                 {
                     SessionTokens = new CognitoUserSession(request.IdToken, request.AccessToken, request.RefreshToken, DateTime.Now, DateTime.Now.AddHours(1))
                 };

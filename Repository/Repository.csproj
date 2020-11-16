@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DB201990809\DB201990809.csproj" />
     <ProjectReference Include="..\Uitility.Common\Uitility.Common.csproj" />
   </ItemGroup>
 

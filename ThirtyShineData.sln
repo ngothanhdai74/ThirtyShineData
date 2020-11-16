@@ -5,15 +5,9 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThirtyShine.InitData", "ThirtyShine.InitData\ThirtyShine.InitData.csproj", "{98312307-7B87-48B0-9F27-30A81DCF677D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.DataObject", "1.DataObject", "{E9F42863-ACDD-404E-BB81-DB79416F019D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DB201990809", "DB201990809\DB201990809.csproj", "{3A6F566A-EEE8-47C7-A855-ADE8C13AEBF8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uitility.Common", "Uitility.Common\Uitility.Common.csproj", "{C36F6142-9DD6-4295-8424-442F37828B5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S4M", "S4M\S4M.csproj", "{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{A4F35F3E-6CBF-4425-8263-96DAFE412E33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{A4F35F3E-6CBF-4425-8263-96DAFE412E33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,18 +19,10 @@ Global
 		{98312307-7B87-48B0-9F27-30A81DCF677D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98312307-7B87-48B0-9F27-30A81DCF677D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98312307-7B87-48B0-9F27-30A81DCF677D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A6F566A-EEE8-47C7-A855-ADE8C13AEBF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A6F566A-EEE8-47C7-A855-ADE8C13AEBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A6F566A-EEE8-47C7-A855-ADE8C13AEBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A6F566A-EEE8-47C7-A855-ADE8C13AEBF8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C36F6142-9DD6-4295-8424-442F37828B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C36F6142-9DD6-4295-8424-442F37828B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C36F6142-9DD6-4295-8424-442F37828B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C36F6142-9DD6-4295-8424-442F37828B5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4F35F3E-6CBF-4425-8263-96DAFE412E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A4F35F3E-6CBF-4425-8263-96DAFE412E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4F35F3E-6CBF-4425-8263-96DAFE412E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,10 +30,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{3A6F566A-EEE8-47C7-A855-ADE8C13AEBF8} = {E9F42863-ACDD-404E-BB81-DB79416F019D}
-		{C2FBF566-F3D6-42BD-9B8C-395406CAB0C5} = {E9F42863-ACDD-404E-BB81-DB79416F019D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F8EC899F-F313-4279-ABD4-BFD3316F4A58}
