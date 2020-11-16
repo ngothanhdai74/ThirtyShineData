@@ -29,6 +29,8 @@ namespace Repository.Implements
         }
         public async static Task HandlerTest(Solution30ShineContext db)
         {
+            // create data BillServiceHis and FlowService
+
 
         }
     }
