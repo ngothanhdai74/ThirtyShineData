@@ -1,10 +1,12 @@
 ﻿using Amazon;
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
+using Amazon.Extensions.CognitoAuthentication;
 using Amazon.Runtime;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +22,8 @@ namespace Uitility
         private static string _clientIdS4M = "6ha1psvpgbmq0p2q7e42pkp9rj";
         //
         private static string UserPoolId_Daihu = "ap-southeast-1_3INv8Gobd";
-        private static string _clientIdDaihu = "3vqo4o9t8mrhpr03h5uhljs9r7";
+        private static string _clientIdDaihu = "4a6p1r60doacf4iiatinbn443f";
+        private static string _clientSecretDaihu = "185g1ru33rfp5h3u8otl0jgc0u3ssovr661pq606b22mjvekii9r";
         //
         private static readonly RegionEndpoint _region = RegionEndpoint.APSoutheast1;
         static string ComputeSha256Hash(string rawData)
@@ -123,7 +126,6 @@ namespace Uitility
             }
 
         }
-
         public static async Task<AuthenticationResultType> RefreshToken(string refreshToken)
         {
             try
@@ -131,8 +133,8 @@ namespace Uitility
                 var cognito = new AmazonCognitoIdentityProviderClient(_region);
                 var request = new AdminInitiateAuthRequest
                 {
-                    UserPoolId = UserPoolId,
-                    ClientId = _clientId,
+                    UserPoolId = UserPoolId_Daihu,
+                    ClientId = _clientIdDaihu,
                     AuthFlow = AuthFlowType.REFRESH_TOKEN_AUTH
                 };
                 request.AuthParameters.Add("REFRESH_TOKEN", refreshToken);
@@ -142,6 +144,56 @@ namespace Uitility
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+        public static async Task<AuthenticationResultType> GetTokenDaihuyen(string userName = "daint", string password = "Davidkmhd!1")
+        {
+            try
+            {
+                // get new token
+                AmazonCognitoIdentityProviderClient provider = new AmazonCognitoIdentityProviderClient(_region);
+                CognitoUserPool userPool = new CognitoUserPool(UserPoolId_Daihu, _clientIdDaihu, provider);
+                CognitoUser user = new CognitoUser(userName, _clientIdDaihu, userPool, provider, _clientSecretDaihu);
+                InitiateSrpAuthRequest authRequest = new InitiateSrpAuthRequest()
+                {
+                    Password = password,
+                };
+
+                AuthFlowResponse authResponse = await user.StartWithSrpAuthAsync(authRequest).ConfigureAwait(false);
+                return authResponse.AuthenticationResult;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+        public static async Task<AuthenticationResultType> RefreshTokenDaihuyen(AuthenticationResultType request)
+        {
+            try
+            {
+                var accesstoken = new JwtSecurityToken(request.AccessToken);
+                var idtoken = new JwtSecurityToken(request.IdToken);
+                string userName = idtoken.Claims.FirstOrDefault(m => m.Type.Equals("cognito:username"))?.Value;
+                // get new token
+                AmazonCognitoIdentityProviderClient provider = new AmazonCognitoIdentityProviderClient(_region);
+                CognitoUserPool userPool = new CognitoUserPool(UserPoolId_Daihu, _clientIdDaihu, provider);
+                CognitoUser user = new CognitoUser(userName, _clientIdDaihu, userPool, provider, _clientSecretDaihu)
+                {
+                    SessionTokens = new CognitoUserSession(request.IdToken, request.AccessToken, request.RefreshToken, DateTime.Now, DateTime.Now.AddHours(1))
+                };
+                InitiateRefreshTokenAuthRequest refreshRequest = new InitiateRefreshTokenAuthRequest()
+                {
+                    AuthFlowType = AuthFlowType.REFRESH_TOKEN_AUTH
+                };
+
+                AuthFlowResponse authResponse = await user.StartWithRefreshTokenAuthAsync(refreshRequest);
+                return authResponse.AuthenticationResult;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
         }
     }
