@@ -20,5 +20,16 @@ namespace Repository.Mockup
             }
             return data;
         }
+        public List<FlowService> FlowServices()
+        {
+            var res = new List<FlowService>();
+            for (int i = 0; i < 6; i++)
+            {
+                res.Add(new FlowService()
+                {
+                });
+            }
+            return res;
+        }
     }
 }
