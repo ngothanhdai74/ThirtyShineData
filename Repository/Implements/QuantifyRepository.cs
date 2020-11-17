@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using Repository.Database.Default;
+using Repository.Database.Default.Tables;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +20,7 @@ namespace Repository.Implements
                     try
                     {
                         await HandlerTest(db);
-                        await transaction.RollbackAsync();
+                        await transaction.CommitAsync();
                     }
                     catch (Exception ex)
                     {
@@ -29,7 +31,26 @@ namespace Repository.Implements
         }
         public async static Task HandlerTest(Solution30ShineContext db)
         {
-            // add data into BillServiceHis and FlowService
+            var firstSalon = db.TblSalon.FirstOrDefault().Id;
+            // create data BillServiceHis and FlowService
+            var billServiceHis = new List<BillServiceHis>();
+            string notebillServiceHis = "bill de test daint";
+            for (int i = 0; i < 5; i++)
+            {
+                billServiceHis.Add(new BillServiceHis()
+                {
+                    SalonId = firstSalon,
+                    CompleteBillTime = DateTime.Now.AddHours(-(++i)),
+                    Note = notebillServiceHis
+                });
+            }
+            db.BillServiceHis.AddRange(billServiceHis);
+            var res = db.SaveChanges();
+            if (res <= 0)
+            {
+                throw new Exception();
+            }
+            var billServiceHisSearch = db.BillServiceHis.Where(m => m.Note.Equals(notebillServiceHis) && m.SalonId == firstSalon);
 
         }
     }
