@@ -18,7 +18,7 @@ namespace Repository.Implements
                     try
                     {
                         await HandlerTest(db);
-                        await transaction.CommitAsync();
+                        await transaction.RollbackAsync();
                     }
                     catch (Exception ex)
                     {
@@ -29,6 +29,7 @@ namespace Repository.Implements
         }
         public async static Task HandlerTest(Solution30ShineContext db)
         {
+            // add data into BillServiceHis and FlowService
 
         }
     }
