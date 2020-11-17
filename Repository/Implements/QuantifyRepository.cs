@@ -29,10 +29,10 @@ namespace Repository.Implements
                     catch (Exception ex)
                     {
                         await transaction.RollbackAsync();
+                        return false;
                     }
                 }
             }
-            return false;
         }
         private async static Task HandlerTest(Solution30ShineContext db)
         {
