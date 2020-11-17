@@ -22,7 +22,7 @@ namespace Repository.Implements
                     try
                     {
                         await HandlerTest(db);
-                        await transaction.CommitAsync();
+                        await transaction.RollbackAsync();
                     }
                     catch (Exception ex)
                     {
@@ -115,6 +115,7 @@ namespace Repository.Implements
                 string groupQuantifyTest = "group daint test ";
                 var servicesInput = ServiceModel.ModelMock;
                 // mock group quantify
+                db.IvGroupQuantifyV2.RemoveRange(db.IvGroupQuantifyV2.ToList()); db.SaveChanges();
                 for (int i = 1; i <= 5; i++)
                 {
                     db.IvGroupQuantifyV2.Add(new IvGroupQuantifyV2()
@@ -130,6 +131,8 @@ namespace Repository.Implements
                 }
                 // mock service quantify
                 var groupQuantifies = db.IvGroupQuantifyV2.Where(m => m.IsDelete == 0 && m.GroupName.Contains(groupQuantifyTest)).ToList();
+                //
+                db.IvServiceQuantifyV2.RemoveRange(db.IvServiceQuantifyV2.ToList()); db.SaveChanges();
                 foreach (var item in services)
                 {
                     foreach (var subitem in groupQuantifies)
@@ -149,6 +152,7 @@ namespace Repository.Implements
                 }
                 var serviceQuantifies = db.IvServiceQuantifyV2.Where(m => m.IsDelete == 0 & services.Select(m => m.Id).ToList().Contains((int)m.ServiceId)).ToList();
                 // mock product quantify
+                db.IvProductQuantifyV2.RemoveRange(db.IvProductQuantifyV2.ToList());db.SaveChanges();
                 foreach (var product in products)
                 {
                     db.IvProductQuantifyV2.Add(new IvProductQuantifyV2()
@@ -169,6 +173,8 @@ namespace Repository.Implements
                 var productQuantifies = db.IvProductQuantifyV2.Where(m => products.Select(m => m.Id).ToList().Contains((int)m.ProductId) && m.CreatedDate == DateTime.UtcNow.Date && m.IsDelete == 0).ToList();
                 // mock group quantify product 
                 int ii = 0;
+                db.IvGroupQuantifyProductV2.RemoveRange(db.IvGroupQuantifyProductV2.ToList());
+                db.SaveChanges();
                 foreach (var groupQuantify in groupQuantifies)
                 {
                     if (products.Count >= ii + 2)
@@ -247,8 +253,7 @@ namespace Repository.Implements
                 }
                 var productChosen = db.IvQuantifyChosen.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId)).ToList();
                 //-----------------------------------------------------------------------------------------------------------------------------
-
-                var productModels = new List<ProductModel>();
+                var productModelsmock = new List<ProductModel>();
                 foreach (var item in servicesInput)
                 {
                     var productsOfService = from sq in db.IvServiceQuantifyV2
@@ -272,8 +277,10 @@ namespace Repository.Implements
                                                 IsBase = pq.IsBase == 1,
                                                 GroupQuantityId = sq.GroupQuantifyId,
                                             };
-                    productModels.AddRange(productsOfService.ToArray());
+                    productModelsmock.AddRange(productsOfService.ToArray());
                 }
+
+                var productModels = productModelsmock;
                 #endregion
             }
         }
