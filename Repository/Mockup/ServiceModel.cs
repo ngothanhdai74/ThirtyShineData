@@ -32,7 +32,7 @@ namespace Repository.Mockup
             if (model2.Quantity == model1.Quantity && model1.ServiceId == model2.ServiceId) return true;
             return false;
         }
-        private static List<ServiceModel> ModelMock
+        public static List<ServiceModel> ModelMock
         {
             get
             {
