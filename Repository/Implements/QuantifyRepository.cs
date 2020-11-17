@@ -34,9 +34,11 @@ namespace Repository.Implements
         public async static Task HandlerTest(Solution30ShineContext db)
         {
             bool step1 = false, step2 = true;
-            var products = db.Product.Where(m => m.IsDelete == 0).OrderBy(m => m.Id).Take(5).ToList();
+            var products = db.Product.Where(m => m.IsDelete == 0).OrderBy(m => m.Id).Take(10).ToList();
             var services = db.Service.Where(m => m.IsDelete == 0).OrderBy(m => m.Id).Take(2).ToList();
-            var salonId = db.TblSalon.FirstOrDefault().Id;
+            var salonIdcho = db.IvInventory.FirstOrDefault(n => n.Type == 2).SalonId;
+            var salonId = db.TblSalon.FirstOrDefault(m => salonIdcho == m.Id).Id;
+            var inventoryId = db.IvInventory.FirstOrDefault(m => m.SalonId == salonId)?.Id;
             if (step1)
             {
                 #region Step 1
@@ -113,7 +115,7 @@ namespace Repository.Implements
                 string groupQuantifyTest = "group daint test ";
                 var servicesInput = ServiceModel.ModelMock;
                 // mock group quantify
-                for (int i = 1; i <= 3; i++)
+                for (int i = 1; i <= 5; i++)
                 {
                     db.IvGroupQuantifyV2.Add(new IvGroupQuantifyV2()
                     {
@@ -145,7 +147,93 @@ namespace Repository.Implements
                         }
                     }
                 }
-                var serviceQuantifies = db.IvServiceQuantifyV2.Where(m => m.IsDelete == 0 & services.Select(m => m.Id).ToList().Contains((int)m.ServiceId));
+                var serviceQuantifies = db.IvServiceQuantifyV2.Where(m => m.IsDelete == 0 & services.Select(m => m.Id).ToList().Contains((int)m.ServiceId)).ToList();
+                // mock product quantify
+                foreach (var product in products)
+                {
+                    db.IvProductQuantifyV2.Add(new IvProductQuantifyV2()
+                    {
+                        ProductId = product.Id,
+                        Volume = 3,
+                        Quantify = 1,
+                        IsBase = 0,
+                        IsDelete = 0,
+                        CreatedDate = DateTime.UtcNow.Date
+                    });
+                    var res = db.SaveChanges();
+                    if (res <= 0)
+                    {
+                        throw new Exception();
+                    }
+                }
+                var productQuantifies = db.IvProductQuantifyV2.Where(m => products.Select(m => m.Id).ToList().Contains((int)m.ProductId) && m.CreatedDate == DateTime.UtcNow.Date && m.IsDelete == 0).ToList();
+                // mock group quantify product 
+                int ii = 0;
+                foreach (var groupQuantify in groupQuantifies)
+                {
+                    if (products.Count >= ii + 2)
+                    {
+                        db.IvGroupQuantifyProductV2.Add(new IvGroupQuantifyProductV2()
+                        {
+                            IsDelete = 0,
+                            GroupQuantifyId = groupQuantify.Id,
+                            CreatedDate = DateTime.UtcNow.Date,
+                            ProductQuantifyId = products[ii++].Id
+                        });
+                        db.IvGroupQuantifyProductV2.Add(new IvGroupQuantifyProductV2()
+                        {
+                            IsDelete = 0,
+                            GroupQuantifyId = groupQuantify.Id,
+                            CreatedDate = DateTime.UtcNow.Date,
+                            ProductQuantifyId = products[ii++].Id
+                        });
+                        var res = db.SaveChanges();
+                        if (res <= 0)
+                        {
+                            throw new Exception();
+                        }
+                    }
+                }
+                var productQuantifyGroup = db.IvGroupQuantifyProductV2.Where(m => products.Select(m => m.Id).ToList().Contains((int)m.ProductQuantifyId) && m.CreatedDate == DateTime.UtcNow.Date && m.IsDelete == 0).ToList();
+                // mock inventory current
+                var ivCu = db.IvInventoryCurrent.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId) && m.IsDelete == false).ToList();
+                if (ivCu?.Any() == true)
+                {
+                    db.IvInventoryCurrent.RemoveRange(ivCu);
+                    var res = db.SaveChanges();
+                    if (res <= 0)
+                    {
+                        throw new Exception();
+                    }
+                }
+                ii = 0;
+                var modelMock = InventoryCurrentMock.GetData();
+                if (modelMock.Count == products.Count)
+                {
+                    foreach (var product in products)
+                    {
+                        db.IvInventoryCurrent.Add(new IvInventoryCurrent()
+                        {
+                            InventoryId = inventoryId,
+                            ProductId = product.Id,
+                            Begin = modelMock[ii].Begin,
+                            SellOrUse = modelMock[ii].SellOrUse,
+                            Import = modelMock[ii].Import,
+                            Export = modelMock[ii].Export,
+                            CreatedDate = DateTime.UtcNow.Date,
+                            IsDelete = false
+                        });
+                        ii++;
+                        var res = db.SaveChanges();
+                        if (res <= 0)
+                        {
+                            throw new Exception();
+                        }
+                    }
+                }
+                ivCu = db.IvInventoryCurrent.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId) && m.InventoryId == inventoryId && m.IsDelete == false && m.CreatedDate == DateTime.UtcNow.Date).ToList();
+
+
                 #endregion
             }
         }
