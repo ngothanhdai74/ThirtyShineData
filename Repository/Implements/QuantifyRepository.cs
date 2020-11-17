@@ -156,10 +156,11 @@ namespace Repository.Implements
                 }
                 var serviceQuantifies = db.IvServiceQuantifyV2.Where(m => m.IsDelete == 0 & services.Select(m => m.Id).ToList().Contains((int)m.ServiceId)).ToList();
                 // mock product quantify
-                db.IvProductQuantifyV2.RemoveRange(db.IvProductQuantifyV2.ToList());db.SaveChanges();
+                db.IvProductQuantifyV2.RemoveRange(db.IvProductQuantifyV2.ToList()); db.SaveChanges();
+                List<IvProductQuantifyV2> mo = new List<IvProductQuantifyV2>();
                 foreach (var product in products)
                 {
-                    db.IvProductQuantifyV2.Add(new IvProductQuantifyV2()
+                    mo.Add(new IvProductQuantifyV2()
                     {
                         ProductId = product.Id,
                         Volume = 3,
@@ -168,12 +169,13 @@ namespace Repository.Implements
                         IsDelete = 0,
                         CreatedDate = DateTime.UtcNow.Date
                     });
-                    var res = db.SaveChanges();
-                    if (res <= 0)
-                    {
-                        throw new Exception();
-                    }
                 }
+                for (int i = 0; i < products.Count; i = i + 2)
+                {
+                    mo[i].IsBase = 1;
+                }
+                db.IvProductQuantifyV2.AddRange(mo); db.SaveChanges();
+                //
                 var productQuantifies = db.IvProductQuantifyV2.Where(m => products.Select(m => m.Id).ToList().Contains((int)m.ProductId) && m.CreatedDate == DateTime.UtcNow.Date && m.IsDelete == 0).ToList();
                 // mock group quantify product 
                 int ii = 0;
