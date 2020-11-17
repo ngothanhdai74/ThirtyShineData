@@ -14,7 +14,7 @@ namespace Repository.Implements
 {
     public class QuantifyRepository
     {
-        public async static Task TestQuantitySupplies()
+        public async static Task<bool> TestQuantitySupplies()
         {
             using (var db = new Solution30ShineContext())
             {
@@ -24,6 +24,7 @@ namespace Repository.Implements
                     {
                         await HandlerTest(db);
                         await transaction.RollbackAsync();
+                        return true;
                     }
                     catch (Exception ex)
                     {
@@ -31,8 +32,9 @@ namespace Repository.Implements
                     }
                 }
             }
+            return false;
         }
-        public async static Task HandlerTest(Solution30ShineContext db)
+        private async static Task HandlerTest(Solution30ShineContext db)
         {
             bool step1 = true, step2 = true, step3 = true;
             var products = db.Product.Where(m => m.IsDelete == 0).OrderBy(m => m.Id).Take(10).ToList();
