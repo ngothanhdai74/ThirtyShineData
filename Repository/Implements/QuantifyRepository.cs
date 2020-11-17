@@ -34,12 +34,15 @@ namespace Repository.Implements
         }
         public async static Task HandlerTest(Solution30ShineContext db)
         {
-            bool step1 = false, step2 = true;
+            bool step1 = false, step2 = false, step3 = true;
             var products = db.Product.Where(m => m.IsDelete == 0).OrderBy(m => m.Id).Take(10).ToList();
             var services = db.Service.Where(m => m.IsDelete == 0).OrderBy(m => m.Id).Take(2).ToList();
             var salonIdcho = db.IvInventory.FirstOrDefault(n => n.Type == 2).SalonId;
             var salonId = db.TblSalon.FirstOrDefault(m => salonIdcho == m.Id).Id;
-            var inventoryId = db.IvInventory.FirstOrDefault(m => m.SalonId == salonId)?.Id;
+            var productModels = ProductModel.GetMock();
+            var inventory = db.IvInventory.FirstOrDefault(m => m.SalonId == salonId);
+            var inventoryId = inventory.Id;
+            var inventoryPartnerId = inventory.ParentId;
             if (step1)
             {
                 #region Step 1
@@ -281,7 +284,66 @@ namespace Repository.Implements
                                             };
                     productModelsmock.AddRange(productsOfService.ToArray());
                 }
-                var productModels = productModelsmock;
+
+                #endregion
+                productModels = productModelsmock;
+            }
+            if (step3)
+            {
+                #region step 3
+                var ivMaxProductInventoryNorms = db.IvMaxServiceInventoryNorms.Where(m => m.IsDelete == false && m.InventoryId == inventoryId).ToList();
+                // mock MaxProductInventoryNorms
+                db.IvMaxServiceInventoryNorms.RemoveRange(ivMaxProductInventoryNorms);
+                db.SaveChanges();
+
+
+
+                //
+
+                var order = new OrderModel()
+                {
+                    Code = Common.GenBillCode(inventory.ParentId, "OD", DateTime.Now),
+                    CosmeticType = EnumDefine.CosmeticType.Supply,
+                    InventoryOrderId = inventory.ParentId,
+                    isAuto = 1,//đơn hàng xuất tự động
+                    InventoryPartnerId = inventoryPartnerId,
+                    OrderType = EnumDefine.OrderType.Export,
+                    Status = EnumDefine.OrderStatusType.Ordered,
+                };
+                for (int i = 0; i < productModels.Count; i++)
+                {
+                    var productModel = productModels[i];
+                    if (productModel.ProductIdChosen.HasValue)
+                    {
+                        productModel = productModels.FirstOrDefault(m => m.ProductId == productModel.ProductIdChosen && productModel.GroupQuantityId == m.GroupQuantityId);
+                    }
+                    else
+                    {
+                        productModel = productModels.FirstOrDefault(m => m.IsBase && productModel.GroupQuantityId == m.GroupQuantityId);
+                        if (productModel == null)
+                        {
+                            productModel = productModels.FirstOrDefault(m => productModel.GroupQuantityId == m.GroupQuantityId);
+                        }
+                    }
+                    if (productModel != null)
+                    {
+                        var ivMaxProductInventoryNorm = ivMaxProductInventoryNorms.FirstOrDefault(m => m.ProductId == productModel.ProductId);
+                        if (ivMaxProductInventoryNorm != null && ivMaxProductInventoryNorm.MaxInventorySugges > 0 && ivMaxProductInventoryNorm.SafeInventorySugges.GetValueOrDefault() > 0)
+                        {
+                            // nếu tồn tự động tính < tồn an toàn
+                            if (productModel.InventoryRemainComputed < ivMaxProductInventoryNorm.SafeInventorySugges)
+                            {
+                                var supply = new OrderDetailModel()
+                                {
+                                    ProductId = (int)productModel.ProductId,
+                                    QuantitySuggest = (int?)(ivMaxProductInventoryNorm.MaxInventorySugges - productModel.InventoryRemainComputed.Value),
+                                    QuantityOrder = (int)(ivMaxProductInventoryNorm.MaxInventorySugges - productModel.InventoryRemainComputed.Value),
+                                };
+                                order.AddSupply(supply);
+                            }
+                        }
+                    }
+                }
                 #endregion
             }
         }

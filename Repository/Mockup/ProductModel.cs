@@ -335,6 +335,17 @@ namespace APIWarehouseManagement.Models
         public static bool Compare(List<ProductModel> model1)
         {
             List<ProductModel> model2 = GetMock();
+            if (model1.Count == model2.Count)
+            {
+                for (int i = 0; i < model1.Count; i++)
+                {
+                    if (Compare(model1[i], model2[i]) == false)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
         private static bool Compare(ProductModel model1, ProductModel model2)
         {
@@ -342,13 +353,11 @@ namespace APIWarehouseManagement.Models
             {
                 return false;
             }
-            if(model1.Begin == model2.Begin &&
+            if (model1.Begin == model2.Begin &&
                model1.Import == model2.Import &&
                 model1.Export == model2.Export &&
                 model1.SellOrUse == model2.SellOrUse &&
-                model1.GroupQuantityId == model2.GroupQuantityId &&
                 model1.ProductId == model2.ProductId &&
-                model1.ProductIdChosen == model2.ProductIdChosen &&
                 model1.Volume == model2.Volume &&
                 model1.Quantify == model2.Quantify &&
                 model1.ServiceUsedCount == model2.ServiceUsedCount &&
@@ -357,7 +366,7 @@ namespace APIWarehouseManagement.Models
             {
                 return true;
             }
-                return false;
+            return false;
         }
     }
 }
