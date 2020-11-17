@@ -32,15 +32,24 @@ namespace Repository.Implements
         }
         public async static Task HandlerTest(Solution30ShineContext db)
         {
+            var products = db.Product.Take(5).ToList();
+            var services = db.Service.Take(2).ToList();
+            //--------------------------------------------------------
             var firstSalon = db.TblSalon.FirstOrDefault().Id;
             // create data BillServiceHis and FlowService
             string notebillServiceHis = "bill de test daint";
+            //======================================================
+            var billServiceHisSearch = db.BillServiceHis.Where(m => m.ImageChecked1.Equals(notebillServiceHis) && m.SalonId == firstSalon).ToList();
+            //--
+            db.BillServiceHis.RemoveRange(billServiceHisSearch);
+            db.SaveChanges();
+            //--
             var max = db.BillServiceHis.Max(max => max.Id);
             for (int i = 0; i < 5; i++)
             {
                 db.BillServiceHis.Add(new BillServiceHis()
                 {
-                    Id = max + i + 1,
+                    Id = 10000000 + i,
                     SalonId = firstSalon,
                     CompleteBillTime = DateTime.Now.AddHours(-(i)),
                     ImageChecked1 = notebillServiceHis
@@ -51,8 +60,12 @@ namespace Repository.Implements
                     throw new Exception();
                 }
             }
-            var billServiceHisSearch = db.BillServiceHis.Where(m => m.ImageChecked1.Equals(notebillServiceHis) && m.SalonId == firstSalon).ToList();
+            billServiceHisSearch = db.BillServiceHis.Where(m => m.ImageChecked1.Equals(notebillServiceHis) && m.SalonId == firstSalon).ToList();
+            //----------------------------------------------------------------------------------------------------------------------------------------------
+            foreach (var item in billServiceHisSearch)
+            {
 
+            }
         }
     }
 }
