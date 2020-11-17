@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Repository.Mockup
+namespace APIWarehouseManagement.Models
 {
     public class ProductModel
     {
@@ -21,10 +22,10 @@ namespace Repository.Mockup
         {
             get
             {
-                if (Volume.HasValue && Quantify.HasValue && ServiceUsedCount.HasValue)
+                if (Volume.HasValue && Quantify.HasValue)
                 {
                     var productCountValue = (Volume.Value / (Quantify.Value * 1.0m));// số lần sử dụng để có thể sài hết 1 sản phẩm
-                    var value = ServiceUsedCount.Value / productCountValue;
+                    var value = ServiceUsedCount.GetValueOrDefault() / productCountValue;
                     return Math.Round(value);
                 }
                 return null;
@@ -39,7 +40,7 @@ namespace Repository.Mockup
             {
                 if (Begin.HasValue && QuantityUsed.HasValue)
                 {
-                    return Begin.Value + Import.GetValueOrDefault() - Export.GetValueOrDefault() - QuantityUsed.Value;
+                    return Begin.Value + Import.GetValueOrDefault() - Export.GetValueOrDefault() - SellOrUse.GetValueOrDefault() - QuantityUsed.Value;
                 }
                 return null;
             }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using APIWarehouseManagement.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Repository.Database.Default;
 using Repository.Database.Default.Tables;
@@ -279,7 +280,6 @@ namespace Repository.Implements
                                             };
                     productModelsmock.AddRange(productsOfService.ToArray());
                 }
-
                 var productModels = productModelsmock;
                 #endregion
             }
