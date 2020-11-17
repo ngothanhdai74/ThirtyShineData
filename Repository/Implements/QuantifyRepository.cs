@@ -232,8 +232,48 @@ namespace Repository.Implements
                     }
                 }
                 ivCu = db.IvInventoryCurrent.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId) && m.InventoryId == inventoryId && m.IsDelete == false && m.CreatedDate == DateTime.UtcNow.Date).ToList();
+                // mock QuantifyChosen
+                foreach (var product in products)
+                {
+                    db.IvQuantifyChosen.Add(new IvQuantifyChosen()
+                    {
+                        ProductId = product.Id
+                    });
+                    var res = db.SaveChanges();
+                    if (res <= 0)
+                    {
+                        throw new Exception();
+                    }
+                }
+                var productChosen = db.IvQuantifyChosen.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId)).ToList();
+                //-----------------------------------------------------------------------------------------------------------------------------
 
-
+                var productModels = new List<ProductModel>();
+                foreach (var item in servicesInput)
+                {
+                    var productsOfService = from sq in db.IvServiceQuantifyV2
+                                            join gqp in db.IvGroupQuantifyProductV2 on sq.GroupQuantifyId equals gqp.GroupQuantifyId
+                                            join pq in db.IvProductQuantifyV2 on gqp.ProductQuantifyId equals pq.ProductId
+                                            join ivc in db.IvInventoryCurrent on pq.ProductId equals ivc.ProductId
+                                            join qc in db.IvQuantifyChosen on pq.ProductId equals qc.ProductId into gj
+                                            from qc in gj.DefaultIfEmpty()
+                                            where sq.ServiceId == item.ServiceId && sq.IsDelete == 0 && gqp.IsDelete == 0 && pq.IsDelete == 0 && ivc.IsDelete == false && ivc.InventoryId == inventoryId
+                                            select new ProductModel
+                                            {
+                                                SellOrUse = ivc.SellOrUse,
+                                                Begin = ivc.Begin,
+                                                Export = ivc.Export,
+                                                Import = ivc.Import,
+                                                ProductId = ivc.ProductId,
+                                                Quantify = pq.Quantify,
+                                                Volume = pq.Volume,
+                                                ServiceUsedCount = item.Quantity,
+                                                ProductIdChosen = qc == null ? default(int?) : qc.ProductId,
+                                                IsBase = pq.IsBase == 1,
+                                                GroupQuantityId = sq.GroupQuantifyId,
+                                            };
+                    productModels.AddRange(productsOfService.ToArray());
+                }
                 #endregion
             }
         }
