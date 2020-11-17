@@ -34,7 +34,7 @@ namespace Repository.Implements
         }
         public async static Task HandlerTest(Solution30ShineContext db)
         {
-            bool step1 = false, step2 = false, step3 = true;
+            bool step1 = true, step2 = true, step3 = true;
             var products = db.Product.Where(m => m.IsDelete == 0).OrderBy(m => m.Id).Take(10).ToList();
             var services = db.Service.Where(m => m.IsDelete == 0).OrderBy(m => m.Id).Take(2).ToList();
             var salonIdcho = db.IvInventory.FirstOrDefault(n => n.Type == 2).SalonId;
@@ -296,7 +296,19 @@ namespace Repository.Implements
                 db.IvMaxServiceInventoryNorms.RemoveRange(ivMaxProductInventoryNorms);
                 db.SaveChanges();
 
-
+                foreach (var product in products)
+                {
+                    db.IvMaxServiceInventoryNorms.Add(new IvMaxServiceInventoryNorms()
+                    {
+                        InventoryId = inventoryId,
+                        ProductId = product.Id,
+                        MaxInventorySugges = 50,
+                        CreatedDate = DateTime.UtcNow.Date,
+                        SafeInventorySugges = 3
+                    });
+                    db.SaveChanges();
+                }
+                ivMaxProductInventoryNorms = db.IvMaxServiceInventoryNorms.Where(m => m.IsDelete == false && m.InventoryId == inventoryId).ToList();
 
                 //
 
@@ -322,7 +334,7 @@ namespace Repository.Implements
                         productModel = productModels.FirstOrDefault(m => m.IsBase && productModel.GroupQuantityId == m.GroupQuantityId);
                         if (productModel == null)
                         {
-                            productModel = productModels.FirstOrDefault(m => productModel.GroupQuantityId == m.GroupQuantityId);
+                            productModel = productModels[i];
                         }
                     }
                     if (productModel != null)
