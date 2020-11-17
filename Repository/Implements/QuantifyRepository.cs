@@ -64,8 +64,31 @@ namespace Repository.Implements
             //----------------------------------------------------------------------------------------------------------------------------------------------
             foreach (var item in billServiceHisSearch)
             {
-
+                db.FlowService.Add(new FlowService()
+                {
+                    BillId = item.Id,
+                    ServiceId = services[0].Id,
+                });
+                db.FlowService.Add(new FlowService()
+                {
+                    BillId = item.Id,
+                    ServiceId = services[1].Id,
+                });
+                var res = db.SaveChanges();
+                if (res <= 0)
+                {
+                    throw new Exception();
+                }
             }
+            //----------------------------------------
+            var today = DateTime.Now;
+            var yesterday = today.AddDays(-(1));
+            var billservices = from s in db.BillServiceHis
+                           join f in db.FlowService on s.Id equals f.BillId
+                           where s.IsDelete == 0 && f.IsDelete == 0 && s.SalonId == firstSalon
+                           && s.CompleteBillTime.GetValueOrDefault() > yesterday && s.CompleteBillTime.GetValueOrDefault() <= today
+                           select f;
+
         }
     }
 }
