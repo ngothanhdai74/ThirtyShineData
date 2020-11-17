@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Repository.Database.Default;
 using Repository.Database.Default.Tables;
 using System;
@@ -33,24 +34,24 @@ namespace Repository.Implements
         {
             var firstSalon = db.TblSalon.FirstOrDefault().Id;
             // create data BillServiceHis and FlowService
-            var billServiceHis = new List<BillServiceHis>();
             string notebillServiceHis = "bill de test daint";
+            var max = db.BillServiceHis.Max(max => max.Id);
             for (int i = 0; i < 5; i++)
             {
-                billServiceHis.Add(new BillServiceHis()
+                db.BillServiceHis.Add(new BillServiceHis()
                 {
+                    Id = max + i + 1,
                     SalonId = firstSalon,
-                    CompleteBillTime = DateTime.Now.AddHours(-(++i)),
-                    Note = notebillServiceHis
+                    CompleteBillTime = DateTime.Now.AddHours(-(i)),
+                    ImageChecked1 = notebillServiceHis
                 });
+                var res = db.SaveChanges();
+                if (res <= 0)
+                {
+                    throw new Exception();
+                }
             }
-            db.BillServiceHis.AddRange(billServiceHis);
-            var res = db.SaveChanges();
-            if (res <= 0)
-            {
-                throw new Exception();
-            }
-            var billServiceHisSearch = db.BillServiceHis.Where(m => m.Note.Equals(notebillServiceHis) && m.SalonId == firstSalon);
+            var billServiceHisSearch = db.BillServiceHis.Where(m => m.ImageChecked1.Equals(notebillServiceHis) && m.SalonId == firstSalon).ToList();
 
         }
     }
