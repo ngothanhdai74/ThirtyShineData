@@ -13,8 +13,8 @@ namespace Testing
         [Test]
         public async System.Threading.Tasks.Task TestQuantitySupplies()
         {
+            Assert.IsTrue(false);
             var res = await QuantifyRepository.TestQuantitySupplies();
-            Assert.IsTrue(res);
         }
     }
 }
