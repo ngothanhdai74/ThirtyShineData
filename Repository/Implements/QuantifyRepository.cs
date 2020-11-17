@@ -240,18 +240,19 @@ namespace Repository.Implements
                 }
                 ivCu = db.IvInventoryCurrent.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId) && m.InventoryId == inventoryId && m.IsDelete == false && m.CreatedDate == DateTime.UtcNow.Date).ToList();
                 // mock QuantifyChosen
-                foreach (var product in products)
-                {
-                    db.IvQuantifyChosen.Add(new IvQuantifyChosen()
-                    {
-                        ProductId = product.Id
-                    });
-                    var res = db.SaveChanges();
-                    if (res <= 0)
-                    {
-                        throw new Exception();
-                    }
-                }
+
+                //foreach (var product in products)
+                //{
+                //    db.IvQuantifyChosen.Add(new IvQuantifyChosen()
+                //    {
+                //        ProductId = product.Id
+                //    });
+                //    var res = db.SaveChanges();
+                //    if (res <= 0)
+                //    {
+                //        throw new Exception();
+                //    }
+                //}
                 var productChosen = db.IvQuantifyChosen.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId)).ToList();
                 //-----------------------------------------------------------------------------------------------------------------------------
                 var productModelsmock = new List<ProductModel>();

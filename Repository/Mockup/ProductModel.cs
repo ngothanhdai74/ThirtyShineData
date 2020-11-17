@@ -45,5 +45,319 @@ namespace APIWarehouseManagement.Models
                 return null;
             }
         }
+        public static List<ProductModel> GetMock()
+        {
+            List<ProductModel> models = new List<ProductModel>();
+
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1056,
+                ProductId = 39,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1056,
+                ProductId = 44,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1057,
+                ProductId = 58,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1057,
+                ProductId = 67,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1058,
+                ProductId = 91,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1058,
+                ProductId = 92,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1059,
+                ProductId = 94,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1059,
+                ProductId = 95,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1060,
+                ProductId = 97,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1060,
+                ProductId = 98,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1056,
+                ProductId = 39,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1056,
+                ProductId = 44,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1057,
+                ProductId = 58,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1057,
+                ProductId = 67,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1058,
+                ProductId = 91,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1058,
+                ProductId = 92,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1059,
+                ProductId = 94,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1059,
+                ProductId = 95,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1060,
+                ProductId = 97,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+            models.Add(new ProductModel()
+            {
+                Begin = 1,
+                Export = 1,
+                Import = 1,
+                SellOrUse = 1,
+                GroupQuantityId = 1060,
+                ProductId = 98,
+                Quantify = 1,
+                IsBase = false,
+                ProductIdChosen = 1,
+                Volume = 3,
+                ServiceUsedCount = 5,
+            });
+
+            return models;
+        }
+        public static bool Compare(List<ProductModel> model1)
+        {
+            List<ProductModel> model2 = GetMock();
+        }
+        private static bool Compare(ProductModel model1, ProductModel model2)
+        {
+            if (model1 == null || model2 == null)
+            {
+                return false;
+            }
+            if(model1.Begin == model2.Begin &&
+               model1.Import == model2.Import &&
+                model1.Export == model2.Export &&
+                model1.SellOrUse == model2.SellOrUse &&
+                model1.GroupQuantityId == model2.GroupQuantityId &&
+                model1.ProductId == model2.ProductId &&
+                model1.ProductIdChosen == model2.ProductIdChosen &&
+                model1.Volume == model2.Volume &&
+                model1.Quantify == model2.Quantify &&
+                model1.ServiceUsedCount == model2.ServiceUsedCount &&
+                model1.QuantityUsed == model2.QuantityUsed
+                 )
+            {
+                return true;
+            }
+                return false;
+        }
     }
 }
