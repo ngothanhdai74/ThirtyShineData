@@ -363,7 +363,7 @@ namespace Repository.Implements
                 #endregion
             }
         }
-        private async static Task InitData()
+        public async static Task InitData()
         {
             using (var db = new Solution30ShineContext())
             {
@@ -588,7 +588,7 @@ namespace Repository.Implements
                 }
             }
         }
-        private async static Task DeleteData()
+        public async static Task DeleteData()
         {
             using (var db = new Solution30ShineContext())
             {
