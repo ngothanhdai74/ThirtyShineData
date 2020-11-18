@@ -363,5 +363,22 @@ namespace Repository.Implements
                 #endregion
             }
         }
+        private async static Task InitData()
+        {
+            using (var db = new Solution30ShineContext())
+            {
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        await transaction.RollbackAsync();
+                    }
+                }
+            }
+        }
     }
 }
