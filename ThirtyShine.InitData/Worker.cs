@@ -21,7 +21,7 @@ namespace ThirtyShine.InitData
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await QuantifyRepository.InitData();
+            await QuantifyRepository.TestQuantitySupplies();
         }
 
 

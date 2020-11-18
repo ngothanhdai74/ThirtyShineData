@@ -579,6 +579,27 @@ namespace Repository.Implements
                         var productChosen = db.IvQuantifyChosen.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId)).ToList();
                         //-----------------------------------------------------------------------------------------------------------------------------
                         #endregion
+
+                        #region step 3
+                        var ivMaxProductInventoryNorms = db.IvMaxServiceInventoryNorms.Where(m => m.IsDelete == false && m.InventoryId == inventoryId).ToList();
+                        // mock MaxProductInventoryNorms
+                        db.IvMaxServiceInventoryNorms.RemoveRange(ivMaxProductInventoryNorms);
+                        db.SaveChanges();
+
+                        foreach (var product in products)
+                        {
+                            db.IvMaxServiceInventoryNorms.Add(new IvMaxServiceInventoryNorms()
+                            {
+                                InventoryId = inventoryId,
+                                ProductId = product.Id,
+                                MaxInventorySugges = 50,
+                                CreatedDate = DateTime.UtcNow.Date,
+                                SafeInventorySugges = 3
+                            });
+                            db.SaveChanges();
+                        }
+                        #endregion
+
                         await transaction.CommitAsync();
                     }
                     catch (Exception ex)
