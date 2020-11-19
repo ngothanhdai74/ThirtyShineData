@@ -39,9 +39,9 @@ namespace Repository.Implements
                 while (reader.Read())
                 {
                     var Id = reader["Id"].CastNullable<int>();
-                    var acreatedDate = reader["CreateDate"];
+                    var receivedDate = reader["receivedDate"].CastNullable<DateTime>();
+                    var CreatedDate = reader["CreatedDate"].CastNullable<DateTime>();
 
-                    var aeceivedDate = reader["receivedDate"].CastNullable<DateTime>();
                 }
             }
         }
