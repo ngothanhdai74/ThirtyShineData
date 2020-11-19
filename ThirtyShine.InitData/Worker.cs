@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Repository;
+using Repository.Database.Default.Tables;
 using Repository.Implements;
 using Uitility;
 using Uitility.Common;
@@ -21,7 +24,16 @@ namespace ThirtyShine.InitData
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await QuantifyRepository.InitData();
+            try
+            {
+                Test();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
 
 
