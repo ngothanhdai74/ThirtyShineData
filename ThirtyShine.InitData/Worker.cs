@@ -26,7 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                Test();
+                RawRepository.GetData();
             }
             catch (Exception ex)
             {

@@ -15,5 +15,14 @@ namespace Repository
             }
             return default;
         }
+        public static T? CastNullable<T>(this object obj)
+            where T : struct 
+        {
+            if (obj != DBNull.Value)
+            {
+                return (T?)obj;
+            }
+            return default;
+        }
     }
 }
