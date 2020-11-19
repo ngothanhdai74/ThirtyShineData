@@ -21,7 +21,7 @@ namespace Repository.Implements
             return stringBuilder.ToString();
         }
         private static string ConnectionString = $"Data Source=10.0.2.76;Database=20190809;User id=ad_30s;Password=VDrs8XHyz3Rdc7PAiv5Q;MultipleActiveResultSets=True;Trusted_Connection=False;connect timeout=100;Max Pool Size=50";
-        public static void GetData()
+        public static IEnumerable<IvOrder> GetData()
         {
             string sql = @"select top 100 * from IvOrder where Note = @note";
             using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
@@ -38,10 +38,12 @@ namespace Repository.Implements
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    var Id = reader["Id"].CastNullable<int>();
-                    var receivedDate = reader["receivedDate"].CastNullable<DateTime>();
-                    var CreatedDate = reader["CreatedDate"].CastNullable<DateTime>();
-
+                    yield return new IvOrder()
+                    {
+                        Id = reader["Id"].Cast<int>(),
+                        ReceivedDate = reader["receivedDate"].CastNullable<DateTime>(),
+                        CreatedDate = reader["CreatedDate"].CastNullable<DateTime>()
+                    };
                 }
             }
         }
