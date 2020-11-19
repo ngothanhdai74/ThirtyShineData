@@ -563,6 +563,7 @@ namespace Repository.Implements
                             }
                         }
                         ivCu = db.IvInventoryCurrent.Where(m => products.Select(m => m.Id).ToList().Contains(m.ProductId) && m.InventoryId == inventoryId && m.IsDelete == false && m.CreatedDate == DateTime.UtcNow.Date).ToList();
+                        db.IvQuantifyChosen.RemoveRange(db.IvQuantifyChosen.ToArray());
                         // mock QuantifyChosen
                         foreach (var product in products)
                         {
