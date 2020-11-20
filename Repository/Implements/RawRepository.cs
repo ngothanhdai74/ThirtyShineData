@@ -24,28 +24,37 @@ namespace Repository.Implements
         public static IEnumerable<IvOrder> GetData()
         {
             string sql = @"select top 100 * from IvOrder where Note = @note";
-            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
-            using (SqlCommand command = sqlConnection.CreateCommand())
+            var param = new SqlParameter();
+            param.ParameterName = "@note";
+            param.Value = "Auto Quantify Supplies";
+            param.SqlDbType = System.Data.SqlDbType.NVarChar;
+
+            return Reader(m => new IvOrder()
             {
-                sqlConnection.Open();
-                command.CommandText = sql;
-                var param = command.CreateParameter();
-                param.ParameterName = "@note";
-                param.Value = "Auto Quantify Supplies";
-                param.SqlDbType = System.Data.SqlDbType.NVarChar;
-                command.Parameters.Add(param);
-                //---------------------------------------
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    yield return new IvOrder()
-                    {
-                        Id = reader["Id"].Cast<int>(),
-                        ReceivedDate = reader["receivedDate"].CastNullable<DateTime>(),
-                        CreatedDate = reader["CreatedDate"].CastNullable<DateTime>()
-                    };
-                }
-            }
+                Id = m["Id"].Cast<int>(),
+                ReceivedDate = m["receivedDate"].CastNullable<DateTime>(),
+                CreatedDate = m["CreatedDate"].CastNullable<DateTime>()
+            }, sql, param);
+
+            //using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
+            //using (SqlCommand command = sqlConnection.CreateCommand())
+            //{
+            //    sqlConnection.Open();
+            //    command.CommandText = sql;
+
+            //    command.Parameters.Add(param);
+            //    //---------------------------------------
+            //    var reader = command.ExecuteReader();
+            //    while (reader.Read())
+            //    {
+            //        yield return new IvOrder()
+            //        {
+            //            Id = reader["Id"].Cast<int>(),
+            //            ReceivedDate = reader["receivedDate"].CastNullable<DateTime>(),
+            //            CreatedDate = reader["CreatedDate"].CastNullable<DateTime>()
+            //        };
+            //    }
+            //}
         }
         protected static IEnumerable<T> Reader<T>(Func<SqlDataReader, T> func, string sql, params SqlParameter[] parameters)
         {
