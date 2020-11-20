@@ -486,7 +486,8 @@ namespace Repository.Implements
                                 Quantify = 1,
                                 IsBase = 0,
                                 IsDelete = 0,
-                                CreatedDate = DateTime.UtcNow.Date
+                                CreatedDate = DateTime.UtcNow.Date,
+                                ConsumptionType = 4
                             });
                         }
                         for (int i = 0; i < products.Count; i = i + 2)
