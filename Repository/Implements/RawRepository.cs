@@ -35,26 +35,6 @@ namespace Repository.Implements
                 ReceivedDate = m["receivedDate"].CastNullable<DateTime>(),
                 CreatedDate = m["CreatedDate"].CastNullable<DateTime>()
             }, sql, param);
-
-            //using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
-            //using (SqlCommand command = sqlConnection.CreateCommand())
-            //{
-            //    sqlConnection.Open();
-            //    command.CommandText = sql;
-
-            //    command.Parameters.Add(param);
-            //    //---------------------------------------
-            //    var reader = command.ExecuteReader();
-            //    while (reader.Read())
-            //    {
-            //        yield return new IvOrder()
-            //        {
-            //            Id = reader["Id"].Cast<int>(),
-            //            ReceivedDate = reader["receivedDate"].CastNullable<DateTime>(),
-            //            CreatedDate = reader["CreatedDate"].CastNullable<DateTime>()
-            //        };
-            //    }
-            //}
         }
         protected static IEnumerable<T> Reader<T>(Func<SqlDataReader, T> func, string sql, params SqlParameter[] parameters)
         {
@@ -70,6 +50,18 @@ namespace Repository.Implements
                 {
                     yield return func(reader);
                 }
+            }
+        }
+        protected static object Scalar(string sql, params SqlParameter[] parameters)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
+            using (SqlCommand command = sqlConnection.CreateCommand())
+            {
+                sqlConnection.Open();
+                command.CommandText = sql;
+                command.Parameters.AddRange(parameters);
+                //---------------------------------------
+                return command.ExecuteScalar();
             }
         }
     }
