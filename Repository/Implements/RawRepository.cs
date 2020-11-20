@@ -64,5 +64,17 @@ namespace Repository.Implements
                 return command.ExecuteScalar();
             }
         }
+        protected static int Execute(string sql, params SqlParameter[] parameters)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
+            using (SqlCommand command = sqlConnection.CreateCommand())
+            {
+                sqlConnection.Open();
+                command.CommandText = sql;
+                command.Parameters.AddRange(parameters);
+                //---------------------------------------
+                return command.ExecuteNonQuery();
+            }
+        }
     }
 }
