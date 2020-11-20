@@ -47,5 +47,21 @@ namespace Repository.Implements
                 }
             }
         }
+        protected static IEnumerable<T> Reader<T>(Func<SqlDataReader, T> func,string sql,params SqlParameter[] parameters)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
+            using (SqlCommand command = sqlConnection.CreateCommand())
+            {
+                sqlConnection.Open();
+                command.CommandText = sql;
+                command.Parameters.AddRange(parameters);
+                //---------------------------------------
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return func(reader);
+                }
+            }
+        }
     }
 }
