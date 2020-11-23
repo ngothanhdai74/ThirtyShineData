@@ -5,25 +5,13 @@
    "FilterSchemas": false,
    "IncludeConnectionString": true,
    "ModelNamespace": null,
-   "OutputContextPath": "Database\/Default",
-   "OutputPath": "Database\/Default\/Tables",
+   "OutputContextPath": "Database\/Thailan",
+   "OutputPath": "Database\/Thailan\/Tables",
    "ProjectRootNamespace": "Repository",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,
    "Tables": [
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dba].[lock_block]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbc].[users]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[_staff_working_state]"
-      },
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[Api_DeviceManager]"
@@ -86,31 +74,7 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[BillDiscount]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[BillService]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[BillServiceHis]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[BillServiceHisOld]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[BillServiceHisOld2]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[BillServiceTimeData]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[BillTagHis]"
       },
       {
          "HasPrimaryKey": true,
@@ -158,10 +122,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[BookingAvailable]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[BookingChangeStylist]"
       },
       {
@@ -175,18 +135,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[BookingRequest]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[BookingSelectedItems]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[BookingSlotAvailable]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[BookingSlotTotal]"
       },
       {
          "HasPrimaryKey": true,
@@ -211,22 +159,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[CallBackRequest]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[CallHis]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[Categories]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[Check_Product_Freeze]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[CheckAttendance]"
       },
       {
          "HasPrimaryKey": true,
@@ -274,10 +206,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[Customer_HairMode_BillHis]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[Customer_Rating]"
       },
       {
@@ -294,27 +222,7 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[CustomerDevice]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[CustomerFeedBack]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[CustomerHairAttribute]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[CustomerOtpToken]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[CustomerRating]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[CustomerRatingDetail]"
       },
       {
          "HasPrimaryKey": true,
@@ -338,18 +246,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[DCustomerConsumeHistory]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[DCustomerDetailBillHistory]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[DCustomerGeneralHistory]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[DCustomerInfo]"
       },
       {
@@ -359,10 +255,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[DCustomerProductTotal]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[DCustomerQueueInfo]"
       },
       {
          "HasPrimaryKey": true,
@@ -395,26 +287,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[DStylistScore]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[Equipment_Departments]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[Equipment_Groups]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[Equipment_Salons]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[Equipment_Suppliers]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[Equipments]"
       },
       {
          "HasPrimaryKey": true,
@@ -478,10 +350,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[FlowTimeKeepinghis_bk20200731]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[Fund_AccountType]"
       },
       {
@@ -499,26 +367,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[Fund_Source]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[GamificationGrade]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[GamificationProfile]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[GamificationQuest]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[GamificationQuestStaff]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[GamificationStaffGrade]"
       },
       {
          "HasPrimaryKey": true,
@@ -566,27 +414,7 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[IvGroupQuantifyProductV2]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvGroupQuantifyV2]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[IvInventory]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvInventoryCheckLog]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvInventoryCheckTime]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvInventoryCheckTimeService]"
       },
       {
          "HasPrimaryKey": true,
@@ -598,14 +426,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[IvInventoryCurrentLog]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvInventoryCurrentTrace]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[IvInventoryHistory]"
       },
       {
@@ -614,27 +434,7 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[IvInventoryLog]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[IvInventoryMaxService]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvMaxProductInventoryNorms]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvMaxProductInventoryNormsHistory]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvMaxServiceInventoryNorms]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvMaxServiceInventoryNormsHistory]"
       },
       {
          "HasPrimaryKey": true,
@@ -654,19 +454,7 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[IvProductQuantifyV2]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvQuantifyChosen]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[IvRouting]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[IvServiceQuantifyV2]"
       },
       {
          "HasPrimaryKey": true,
@@ -691,42 +479,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[KetQuaKinhDoanh_Salon]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Criterias]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Data_Days]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Data_Months]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Detail_Ratings]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Detail_SCSC]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Point_Mappings]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Property_Points]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Salon_Points]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[KPI_Salons]"
       },
       {
          "HasPrimaryKey": true,
@@ -786,10 +538,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[MktCampaignProduct]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[MktCampaignService]"
       },
       {
@@ -827,14 +575,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[NotificationUsers]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[NotificationUsers191113]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[NotificationUsersBK]"
       },
       {
          "HasPrimaryKey": true,
@@ -914,10 +654,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[ProductReturn_Explanation]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[ProductUsedStatistic]"
       },
       {
@@ -946,19 +682,7 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[RatingAnswer]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[RatingBonus]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[RatingConfig]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[RatingConfigAnswer]"
       },
       {
          "HasPrimaryKey": true,
@@ -978,15 +702,7 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[RatingType]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[Realtime_Firebase_TokenID]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[ReportProductivity]"
       },
       {
          "HasPrimaryKey": true,
@@ -1010,35 +726,11 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[SalonAudit]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[SalonCamera]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[SalonCampaign]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[SalonDailyCost]"
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[SalonEquipment]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[SalonEquipmentChange]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[SalonProduct]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[SalonRanking]"
       },
       {
          "HasPrimaryKey": true,
@@ -1059,14 +751,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[SCSC_CheckError]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[SCSC_CheckError_Log]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[SCSC_SalonStaffCheckError]"
       },
       {
          "HasPrimaryKey": true,
@@ -1099,14 +783,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[ServiceTemp]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[ServiceWorkflow]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[ServiceWorkflowStep]"
       },
       {
          "HasPrimaryKey": true,
@@ -1206,10 +882,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[StaffApprovalInfo]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[StaffAutoCondition]"
       },
       {
@@ -1242,27 +914,11 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[StaffSkillTag]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[StaffTarget]"
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[StaffWorkingData]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StaticCustomer]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[StaticExpense]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StaticExpense_V2]"
       },
       {
          "HasPrimaryKey": true,
@@ -1282,14 +938,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[StatisticRating]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StatisticRevenue]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[Statistics_XuatVatTu]"
       },
       {
@@ -1303,14 +951,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[StatisticScscError]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StatisticServiceQualityStaff]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StoreQrScan]"
       },
       {
          "HasPrimaryKey": true,
@@ -1370,58 +1010,6 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextBill]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextGroup]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextGroupMember]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextKpiConfig]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextLevelConfig]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextLevelKpiConfig]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextSalaryConfig]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextSalonLevelConfig]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextServiceSalaryConfig]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextStaticData]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextStaticProduct]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextStaticService]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[StynextTarget]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[SuKien_Team]"
       },
       {
@@ -1442,19 +1030,7 @@
       },
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[TargetHighlights]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[TargetHighlightSalons]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[Tbl_Category]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[Tbl_Category_bk20200424]"
       },
       {
          "HasPrimaryKey": true,
@@ -1567,14 +1143,6 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[TimekeepingConfig]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[TimekeepingQueueInfo]"
-      },
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[TimekeepingSuggestionStaticData]"
       },
       {
          "HasPrimaryKey": true,
