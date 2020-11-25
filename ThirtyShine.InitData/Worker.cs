@@ -26,7 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-               await QuantifyRepository.InitData();
+                await ThailanRepository.Process();
             }
             catch (Exception ex)
             {

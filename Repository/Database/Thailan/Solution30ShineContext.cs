@@ -325,7 +325,6 @@ namespace Repository.Database.Thailan
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=10.0.2.76;Initial Catalog=DbThaiLan;Persist Security Info=True;User ID=ad_30s;Password=VDrs8XHyz3Rdc7PAiv5Q");
             }
         }
