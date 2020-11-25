@@ -694,5 +694,30 @@ namespace Repository.Implements
                 }
             }
         }
+
+        public static IEnumerable<ServiceModel> GetBillServicesBySalonId(int salonId, int day = 1)
+        {
+            using (var db = new Solution30ShineContext())
+            {
+                string sql = string.Format(@"declare @now datetime, @yesterday datetime;
+                        set @now =  GETDATE()
+                        set @yesterday = DATEADD(day,-{0}, @now)
+                        select f.ServiceId as ServiceId, count(f.ServiceId) as Quantity
+                        from BillServiceHis as s
+                        inner join FlowService as f
+                        on s.Id = f.BillId
+                        where s.CompleteBillTime > @yesterday and s.CompleteBillTime < @now
+                        and s.IsDelete = 0 and f.IsDelete = 0 and s.SalonId = {1}
+                        group by f.ServiceId", day, salonId);
+                db.Database.OpenConnection();
+                var command = db.Database.GetDbConnection().CreateCommand();
+                command.CommandText = sql;
+                var reader = command.ExecuteReader();
+                while (reader.Read()) yield return new ServiceModel(reader["ServiceId"].Cast<int>(), reader["Quantity"].Cast<int>());
+                reader.Close();
+                reader.Dispose();
+                command.Dispose();
+            }
+        }
     }
 }
