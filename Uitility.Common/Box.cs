@@ -15,4 +15,13 @@ namespace Uitility.Common
             return true;
         }
     }
+    class Test
+    {
+        public Test()
+        {
+            var a = new Box();
+            var b = new Box();
+            var aa = a == b;
+        }
+    }
 }
