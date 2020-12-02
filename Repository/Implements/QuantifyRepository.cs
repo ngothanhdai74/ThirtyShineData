@@ -694,7 +694,13 @@ namespace Repository.Implements
                 }
             }
         }
-
+        public static bool GetBillServicesBySalonId()
+        {
+            using (var db = new Solution30ShineContext())
+            {
+                return db.Database.EnsureCreated();
+            }
+        }
         public static IEnumerable<ServiceModel> GetBillServicesBySalonId(int salonId, int day = 1)
         {
             using (var db = new Solution30ShineContext())
