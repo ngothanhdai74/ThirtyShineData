@@ -30,12 +30,8 @@ namespace ThirtyShine.InitData
             }
             catch (Exception ex)
             {
-
                 throw;
             }
-
         }
-
-
     }
 }
