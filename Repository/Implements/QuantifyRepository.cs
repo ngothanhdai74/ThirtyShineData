@@ -14,6 +14,20 @@ namespace Repository.Implements
 {
     public class QuantifyRepository
     {
+        public static IEnumerable<IvGroupQuantifyProductV2> TestGroupBy()
+        {
+            using (var db = new Solution30ShineContext())
+            {
+                var data = db.IvGroupQuantifyProductV2.ToLookup(m => m.GroupQuantifyId);
+                foreach (var item in data)
+                {
+                    foreach (var subitem in item)
+                    {
+                        yield return subitem;
+                    }
+                }
+            }
+        }
         public async static Task<bool> TestQuantitySupplies()
         {
             using (var db = new Solution30ShineContext())

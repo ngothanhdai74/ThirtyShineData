@@ -26,7 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                var data = QuantifyRepository.GetBillServicesBySalonId(3,1);
+                var data = QuantifyRepository.TestGroupBy();
             }
             catch (Exception ex)
             {
