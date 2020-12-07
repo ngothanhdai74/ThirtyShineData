@@ -26,7 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                var data = QuantifyRepository.TestGroupBy();
+                await TestQuantifyProduct.Test();
             }
             catch (Exception ex)
             {

@@ -70,7 +70,6 @@ namespace Repository.Implements
                 db.BillServiceHis.RemoveRange(billServiceHisSearch);
                 db.SaveChanges();
                 //--
-                var max = db.BillServiceHis.Max(max => max.Id);
                 for (int i = 0; i < 5; i++)
                 {
                     db.BillServiceHis.Add(new BillServiceHis()
