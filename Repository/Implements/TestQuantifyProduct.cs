@@ -108,7 +108,8 @@ namespace Repository.Implements
                     Begin = 5,
                     Import = 1,
                     Export = 2,
-                    SellOrUse = 1
+                    SellOrUse = 1,
+                    IsDelete = false
                 });
                 db.SaveChanges();
             }
@@ -122,7 +123,8 @@ namespace Repository.Implements
                     ProductId = (int)item,
                     Date = DateTime.Now.Date,
                     MaxInventorySugges = 10,
-                    SafeInventorySugges = 3
+                    SafeInventorySugges = 3,
+                    IsDelete = false
                 });
                 db.SaveChanges();
             }
