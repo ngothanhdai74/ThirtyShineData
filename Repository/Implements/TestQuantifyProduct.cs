@@ -42,8 +42,11 @@ namespace Repository.Implements
             string notebillServiceHis = "bill de test daint";
             int idBillServiceHisRange = 10000000;
             //======================================================
-            var billServiceHisSearch = db.BillServiceHis.Where(m => m.ImageChecked1.Equals(notebillServiceHis) && m.SalonId == inventory.SalonId && m.Id >= idBillServiceHisRange && m.IsDelete == 0).ToList();
+            var billServiceHisSearch = db.BillServiceHis.Where(m => m.ImageChecked1.Equals(notebillServiceHis) && m.Id >= idBillServiceHisRange && m.IsDelete == 0).ToList();
             db.BillServiceHis.RemoveRange(billServiceHisSearch);
+            db.SaveChanges();
+            var flows = db.FlowService.Where(m => m.BillId >= 10000000).ToArray();
+            db.FlowService.RemoveRange(flows);
             db.SaveChanges();
             //----------------------
             var ivCu = db.IvInventoryCurrent.Where(m => m.InventoryId == inventory.Id && m.IsDelete == false).ToList();
@@ -57,7 +60,7 @@ namespace Repository.Implements
             #endregion
             #region Add
             #region billservicehis
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 829; i++)
             {
                 db.BillServiceHis.Add(new BillServiceHis()
                 {
@@ -67,12 +70,13 @@ namespace Repository.Implements
                     ImageChecked1 = notebillServiceHis,
                     IsDelete = 0
                 });
-                var res = db.SaveChanges();
-                if (res <= 0)
-                {
-                    throw new Exception();
-                }
             }
+            var res = db.SaveChanges();
+            if (res <= 0)
+            {
+                throw new Exception();
+            }
+
             #endregion
             #region flow service
             billServiceHisSearch = db.BillServiceHis.Where(m => m.ImageChecked1.Equals(notebillServiceHis) && m.SalonId == inventory.SalonId && m.Id >= idBillServiceHisRange && m.IsDelete == 0).ToList();
@@ -81,20 +85,14 @@ namespace Repository.Implements
                 db.FlowService.Add(new FlowService()
                 {
                     BillId = item.Id,
-                    ServiceId = distinctServiceIds[0],
+                    ServiceId = 53,
                     IsDelete = 0
                 });
-                db.FlowService.Add(new FlowService()
-                {
-                    BillId = item.Id,
-                    ServiceId = distinctServiceIds[1],
-                    IsDelete = 0
-                });
-                var res = db.SaveChanges();
-                if (res <= 0)
-                {
-                    throw new Exception();
-                }
+            }
+            res = db.SaveChanges();
+            if (res <= 0)
+            {
+                throw new Exception();
             }
             #endregion
             #region inventoryCurrent
@@ -111,8 +109,8 @@ namespace Repository.Implements
                     SellOrUse = 1,
                     IsDelete = false
                 });
-                db.SaveChanges();
             }
+            db.SaveChanges();
             #endregion
             #region inventoryNorm
             foreach (var item in distinctProducts)
@@ -126,8 +124,8 @@ namespace Repository.Implements
                     SafeInventorySugges = 3,
                     IsDelete = false
                 });
-                db.SaveChanges();
             }
+            db.SaveChanges();
             #endregion
             #endregion
         }
