@@ -60,7 +60,7 @@ namespace Repository.Implements
             #endregion
             #region Add
             #region billservicehis
-            for (int i = 0; i < 830; i++)
+            for (int i = 0; i < 680; i++)
             {
                 db.BillServiceHis.Add(new BillServiceHis()
                 {
@@ -103,7 +103,7 @@ namespace Repository.Implements
                     InventoryId = inventory.Id,
                     ProductId = (int)item,
                     AccountingDate = DateTime.Now.Date,
-                    Begin = 5,
+                    Begin = 6,
                     Import = 1,
                     Export = 2,
                     SellOrUse = 1,
