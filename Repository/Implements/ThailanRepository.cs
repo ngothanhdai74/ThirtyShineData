@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ThirtyShine;
 
 namespace Repository.Implements
 {
@@ -43,7 +44,19 @@ namespace Repository.Implements
         {
             using (var db = new Database.Default.Solution30ShineContext())
             {
-                return db.PermissionMenu.ToList();
+                var data = from a in db.OrderBrokenDeviceHandling
+                           join b in db.TblSalon on a.SalonId equals b.Id
+                           where a.IsDelete == false
+                           select a;
+
+                var data1 = data.GroupBy(m => m.CategoryId);
+
+                var sql = data1.ToSql();
+
+
+
+
+                return default;
             }
         }
     }
