@@ -31,6 +31,12 @@ namespace Repository.Implements
         }
         private async static Task Handler(Solution30ShineContext db, int inventoryId)
         {
+
+            var orders = db.IvOrder.FromSqlRaw("select * from IvOrder where Note ='Auto Quantify Supplies'").ToList();
+            db.IvOrder.RemoveRange(orders);
+            var da = db.SaveChanges();
+
+
             var inventory = db.IvInventory.Find(inventoryId);
             var serviceQuantifies = db.IvServiceQuantifyV2.ToList();
             var groupQuantifies = db.IvGroupQuantifyV2.ToList();
@@ -60,7 +66,7 @@ namespace Repository.Implements
             #endregion
             #region Add
             #region billservicehis
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 500; i++)
             {
                 db.BillServiceHis.Add(new BillServiceHis()
                 {
@@ -103,11 +109,12 @@ namespace Repository.Implements
                     InventoryId = inventory.Id,
                     ProductId = (int)item,
                     AccountingDate = DateTime.Now.Date,
-                    Begin = 6,
+                    Begin = 3,
                     Import = 1,
                     Export = 2,
-                    SellOrUse = 1,
-                    IsDelete = false
+                    SellOrUse = 0,
+                    IsDelete = false,
+                    VolumeRemain = 0
                 });
             }
             db.SaveChanges();
