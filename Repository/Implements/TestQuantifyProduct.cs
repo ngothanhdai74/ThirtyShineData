@@ -66,7 +66,7 @@ namespace Repository.Implements
             #endregion
             #region Add
             #region billservicehis
-            for (int i = 0; i < 500; i++)
+            for (int i = 0; i < 50; i++)
             {
                 db.BillServiceHis.Add(new BillServiceHis()
                 {
