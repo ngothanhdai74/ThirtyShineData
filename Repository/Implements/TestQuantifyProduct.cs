@@ -31,12 +31,6 @@ namespace Repository.Implements
         }
         private async static Task Handler(Solution30ShineContext db, int inventoryId, int billCount)
         {
-
-            var orders = db.IvOrder.FromSqlRaw("select * from IvOrder where Note ='Auto Quantify Supplies'").ToList();
-            db.IvOrder.RemoveRange(orders);
-            var da = db.SaveChanges();
-
-
             var inventory = db.IvInventory.Find(inventoryId);
             var serviceQuantifies = db.IvServiceQuantifyV2.ToList();
             var groupQuantifies = db.IvGroupQuantifyV2.ToList();
