@@ -11,7 +11,7 @@ namespace Repository.Implements
 {
     public class TestQuantifyProduct
     {
-        public async static Task Test(int inventoryId = 3)
+        public async static Task Test(int inventoryId = 3,int billCount = 100)
         {
             using (var db = new Solution30ShineContext())
             {
@@ -19,7 +19,7 @@ namespace Repository.Implements
                 {
                     try
                     {
-                        await Handler(db, inventoryId);
+                        await Handler(db, inventoryId, billCount);
                         await transaction.CommitAsync();
                     }
                     catch (Exception ex)
@@ -29,7 +29,7 @@ namespace Repository.Implements
                 }
             }
         }
-        private async static Task Handler(Solution30ShineContext db, int inventoryId)
+        private async static Task Handler(Solution30ShineContext db, int inventoryId, int billCount)
         {
 
             var orders = db.IvOrder.FromSqlRaw("select * from IvOrder where Note ='Auto Quantify Supplies'").ToList();
@@ -66,7 +66,7 @@ namespace Repository.Implements
             #endregion
             #region Add
             #region billservicehis
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < billCount; i++)
             {
                 db.BillServiceHis.Add(new BillServiceHis()
                 {
