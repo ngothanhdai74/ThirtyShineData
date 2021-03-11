@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Repository.Database.Default.Tables;
+using Uitility.Common;
 
 namespace Repository.Database.Default
 {
@@ -433,7 +434,7 @@ namespace Repository.Database.Default
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=10.0.2.76;Initial Catalog=20190809;Persist Security Info=True;User ID=ad_30s;Password=VDrs8XHyz3Rdc7PAiv5Q");
+                optionsBuilder.UseSqlServer(ConfigSettings.Connection);
             }
         }
 
