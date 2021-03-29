@@ -26,7 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                await ComonRepository.GetAsync();
+                await TestQuantifyProduct.Test(37, 150);
             }
             catch (Exception ex)
             {

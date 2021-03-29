@@ -49,14 +49,14 @@ namespace Repository.Implements
             db.FlowService.RemoveRange(flows);
             db.SaveChanges();
             //----------------------
-            var ivCu = db.IvInventoryCurrent.Where(m => m.InventoryId == inventory.Id && m.IsDelete == false).ToList();
-            db.IvInventoryCurrent.RemoveRange(ivCu);
-            db.SaveChanges();
-            //----------------------
-            var ivMaxProductInventoryNorms = db.IvMaxServiceInventoryNorms.Where(m => m.IsDelete == false && m.InventoryId == inventoryId).ToList();
-            // mock MaxProductInventoryNorms
-            db.IvMaxServiceInventoryNorms.RemoveRange(ivMaxProductInventoryNorms);
-            db.SaveChanges();
+            //var ivCu = db.IvInventoryCurrent.Where(m => m.InventoryId == inventory.Id && m.IsDelete == false).ToList();
+            //db.IvInventoryCurrent.RemoveRange(ivCu);
+            //db.SaveChanges();
+            ////----------------------
+            //var ivMaxProductInventoryNorms = db.IvMaxServiceInventoryNorms.Where(m => m.IsDelete == false && m.InventoryId == inventoryId).ToList();
+            //// mock MaxProductInventoryNorms
+            //db.IvMaxServiceInventoryNorms.RemoveRange(ivMaxProductInventoryNorms);
+            //db.SaveChanges();
             #endregion
             #region Add
             #region billservicehis
@@ -95,39 +95,39 @@ namespace Repository.Implements
                 throw new Exception();
             }
             #endregion
-            #region inventoryCurrent
-            foreach (var item in distinctProducts)
-            {
-                db.IvInventoryCurrent.Add(new IvInventoryCurrent()
-                {
-                    InventoryId = inventory.Id,
-                    ProductId = (int)item,
-                    AccountingDate = DateTime.Now.Date,
-                    Begin = 3,
-                    Import = 1,
-                    Export = 2,
-                    SellOrUse = 0,
-                    IsDelete = false,
-                    VolumeRemain = 0
-                });
-            }
-            db.SaveChanges();
-            #endregion
-            #region inventoryNorm
-            foreach (var item in distinctProducts)
-            {
-                db.IvMaxServiceInventoryNorms.Add(new IvMaxServiceInventoryNorms()
-                {
-                    InventoryId = inventory.Id,
-                    ProductId = (int)item,
-                    Date = DateTime.Now.Date,
-                    MaxInventorySugges = 10,
-                    SafeInventorySugges = 3,
-                    IsDelete = false
-                });
-            }
-            db.SaveChanges();
-            #endregion
+            //#region inventoryCurrent
+            //foreach (var item in distinctProducts)
+            //{
+            //    db.IvInventoryCurrent.Add(new IvInventoryCurrent()
+            //    {
+            //        InventoryId = inventory.Id,
+            //        ProductId = (int)item,
+            //        AccountingDate = DateTime.Now.Date,
+            //        Begin = 3,
+            //        Import = 1,
+            //        Export = 2,
+            //        SellOrUse = 0,
+            //        IsDelete = false,
+            //        VolumeRemain = 0
+            //    });
+            //}
+            //db.SaveChanges();
+            //#endregion
+            //#region inventoryNorm
+            //foreach (var item in distinctProducts)
+            //{
+            //    db.IvMaxServiceInventoryNorms.Add(new IvMaxServiceInventoryNorms()
+            //    {
+            //        InventoryId = inventory.Id,
+            //        ProductId = (int)item,
+            //        Date = DateTime.Now.Date,
+            //        MaxInventorySugges = 10,
+            //        SafeInventorySugges = 3,
+            //        IsDelete = false
+            //    });
+            //}
+            //db.SaveChanges();
+            //#endregion
             #endregion
         }
     }
