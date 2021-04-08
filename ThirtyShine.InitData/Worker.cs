@@ -26,7 +26,8 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                QuantifyRepository.XemSQL();
+                var data = DateTime.Today;
+                var orther = data.AddDays(-15);
             }
             catch (Exception ex)
             {
