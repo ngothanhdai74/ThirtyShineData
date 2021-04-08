@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ThirtyShine;
 
 namespace Repository.Implements
 {
@@ -707,11 +708,32 @@ namespace Repository.Implements
                 }
             }
         }
-        public static bool GetBillServicesBySalonId()
+        public static void XemSQL()
         {
             using (var db = new Solution30ShineContext())
             {
-                return db.Database.EnsureCreated();
+                var aa = DateTime.Today.DayOfWeek;
+
+
+
+                var data = (from a in db.FlowTimeKeeping
+                            join b in db.StaffType on a.Type equals b.Id
+                            join c in db.Staff on a.StaffId equals c.Id
+                            join d in db.TblSalon on a.SalonId equals d.Id
+                            where a.Type == 4 && !d.ShortName.Equals("Salontest")
+                            select new
+                            {
+                                a.StaffId,
+                                c.Fullname,
+                                d.ShortName,
+                                a.WorkDate,
+                                a.NumberOfWorkHourBasic,
+                                a.NumberOfWorkHourOver,
+                                a.NumberOfWorkHour
+                            });
+
+                var sql = data.ToSql();
+
             }
         }
         public static IEnumerable<ServiceModel> GetBillServicesBySalonId(int salonId, int day = 1)

@@ -26,7 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                await TestQuantifyProduct.Test(37, 150);
+                QuantifyRepository.XemSQL();
             }
             catch (Exception ex)
             {
