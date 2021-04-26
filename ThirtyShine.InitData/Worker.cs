@@ -26,8 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                var data = DateTime.Today;
-                var orther = data.AddDays(-15);
+                await TestQuantifyProduct.Test(5875, 600);
             }
             catch (Exception ex)
             {
