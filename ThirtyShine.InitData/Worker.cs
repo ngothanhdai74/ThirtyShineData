@@ -26,7 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                await TestQuantifyProduct.Test(6218, 200);
+                await StatisticDataRepository.InitDataGoiYSlotChamCong();
             }
             catch (Exception ex)
             {

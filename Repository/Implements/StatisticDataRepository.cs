@@ -11,13 +11,13 @@ namespace Repository.Implements
 {
     public class StatisticDataRepository
     {
-        public async Task InitDataGoiYSlotChamCong(int salonId = 2, int bookingCount = 10)
+        public async static Task InitDataGoiYSlotChamCong(int salonId = 2, int bookingCount = 10)
         {
             using (var db = new Solution30ShineContext())
             {
-                var bookHourSubs = await db.BookHourSub.Where(m => m.SalonId == salonId).ToListAsync();
+                var bookHourSubs = await db.BookHourSub.Where(m => m.SalonId == salonId && m.Publish == true && m.IsDelete == false).ToListAsync();
 
-                var bookHourSecondSubHours = await db.BookHour2ndSub.Where(m => m.SalonId == salonId).ToListAsync();
+                var bookHourSecondSubHours = await db.BookHour2ndSub.Where(m => m.SalonId == salonId && m.Publish == true && m.IsDelete == false).ToListAsync();
 
                 var dates = new List<DateTime>()
                 {
@@ -74,8 +74,8 @@ namespace Repository.Implements
                                     SubHourId = bookHourSub.SubHourId,
                                 };
                                 db.BookingSlotTotal.Add(mo);
-                                db.SaveChanges();
                             }
+                            db.SaveChanges();
                         }
                     }
 
@@ -125,8 +125,8 @@ namespace Repository.Implements
                                     SubHourId = bookHourSecondSubHour.SecondSubHourId,
                                 };
                                 db.BookingSlotTotal.Add(mo);
-                                db.SaveChanges();
                             }
+                            db.SaveChanges();
                         }
                     }
                 }
