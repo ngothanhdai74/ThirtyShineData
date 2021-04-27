@@ -26,7 +26,7 @@ namespace ThirtyShine.InitData
         {
             try
             {
-                await TestQuantifyProduct.Test(5875, 600);
+                await TestQuantifyProduct.Test(6218, 200);
             }
             catch (Exception ex)
             {

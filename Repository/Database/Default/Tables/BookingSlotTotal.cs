@@ -18,6 +18,7 @@ namespace Repository.Database.Default.Tables
         public int Total { get; set; }
         public int StaffId { get; set; }
         public int GroupId { get; set; }
+        public int SecondSubHourId { get; set; }
         public TimeSpan HourFrame { get; set; }
         public bool IsDelete { get; set; }
         [Required]
